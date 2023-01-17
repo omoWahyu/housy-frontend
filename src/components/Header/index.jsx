@@ -1,56 +1,57 @@
 import React from "react";
-import logo from "../../Logo.svg";
+import logo from "../../assets/icons/Logo.svg";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 import {
-	Container,
+	// Container,
 	Navbar,
 	Nav,
 	Button,
-	NavDropdown,
+	// NavDropdown,
 	InputGroup,
 	Form,
-	Row,
-	Col,
+	// Row,
+	// Col,
 } from "react-bootstrap";
+import css from "./index.module.css";
 
-export default function Header() {
+export default function Header(props) {
 	return (
-		<Navbar style={{ backgroundColor: "white" }} expand="lg">
-			<Container>
-				<Row className="w-100 d-flex align-items-center">
-					<Col xs={12} md={4} className="d-flex justify-items-between">
-						<Navbar.Brand href="#home" className="m-0">
-							<img src={logo} alt="" height={64} />
-						</Navbar.Brand>
+		<Navbar style={props.style} expand="lg" className={props.className}>
+			{/* <Container className=""> */}
+			<Navbar.Brand href="#home" className={css.navbarBrand}>
+				<img src={logo} alt="" height={64} />
+			</Navbar.Brand>
 
-						<Navbar.Toggle
-							aria-controls="basic-navbar-nav"
-							className="ms-auto"
+			<Navbar.Toggle
+				aria-controls="basic-navbar-nav"
+				className="ms-auto me-4"
+			/>
+			<Navbar.Collapse id="basic-navbar-nav" className="">
+				<Form className="d-flex">
+					<InputGroup className={css.inputGroup}>
+						<Form.Control
+							size="lg"
+							placeholder="Search"
+							aria-label="Search"
+							aria-describedby="basic-addon1"
+							className="ms-4 border-0 border-end bg-tertiary"
 						/>
-					</Col>
-					<Col xs={12} md={8} className="d-flex align-items-center">
-						<Navbar.Collapse id="basic-navbar-nav" className="w-100 w-md-auto">
-							<InputGroup style={{ width: "20rem" }}>
-								<Form.Control
-									placeholder="Username"
-									aria-label="Username"
-									aria-describedby="basic-addon1"
-								/>
-								<InputGroup.Text id="basic-addon1">
-									<HiMagnifyingGlass fontSize={24} />
-								</InputGroup.Text>
-							</InputGroup>
-							<Nav className="ms-auto">
-								<Button variant="light" disabled>
-									Sign In
-								</Button>{" "}
-								<Button variant="light">Sign Up</Button>{" "}
-							</Nav>
-						</Navbar.Collapse>
-					</Col>
-				</Row>
-			</Container>
+						<Button variant="outline-primary border-0 border-start bg-tertiary">
+							<HiMagnifyingGlass fontSize={24} strokeWidth={2} />
+						</Button>
+					</InputGroup>
+				</Form>
+				<Nav className="ms-auto px-4">
+					<Button size="lg" variant="light">
+						Sign In
+					</Button>
+					<Button size="lg" variant="light">
+						Sign Up
+					</Button>
+				</Nav>
+			</Navbar.Collapse>
+			{/* </Container> */}
 		</Navbar>
 	);
 }
