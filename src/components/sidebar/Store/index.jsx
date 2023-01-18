@@ -1,33 +1,70 @@
 import React from "react";
-import { Button, InputGroup, Form, Stack, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import {
+	ToggleButton,
+	Button,
+	ButtonGroup,
+	InputGroup,
+	Form,
+	Stack,
+	Row,
+	Col,
+} from "react-bootstrap";
 import { HiCalendar } from "react-icons/hi2";
 
 export default function Sidebar(props) {
+	// const [checked, setChecked] = useState(false);
+	const [durValue, setDurValue] = useState("0");
+	const [bedValue, setBedValue] = useState("0");
+	const [bathValue, setBathValue] = useState("0");
+
+	const dur = [
+		{ name: "Day", value: "1" },
+		{ name: "Month", value: "2" },
+		{ name: "Year", value: "3" },
+	];
+	const bed = [
+		{ name: "1", value: "1" },
+		{ name: "2", value: "2" },
+		{ name: "3", value: "3" },
+		{ name: "4", value: "4" },
+		{ name: "5+", value: "5" },
+	];
+
+	const bath = [
+		{ name: "1", value: "1" },
+		{ name: "2", value: "2" },
+		{ name: "3", value: "3" },
+		{ name: "4", value: "4" },
+		{ name: "5+", value: "5" },
+	];
 	return (
 		<>
 			<aside className={props.className} style={props.style}>
 				<Form>
-					<Stack gap={4} style={{ marginTop: "5rem" }}>
+					<Stack gap={4}>
 						<div className="">
 							<h4 className="mb-3">
 								<strong>Type of Rent</strong>
 							</h4>
 
 							<div className="d-flex gap-5">
-								<Button variant={props.color} size="lg" className="w-100">
-									Dark
-								</Button>
-								<Button variant={props.color} size="lg" className="w-100">
-									Dark
-								</Button>
-								<Button
-									variant={props.color}
-									size="lg"
-									className="w-100"
-									active
-								>
-									Dark
-								</Button>
+								{dur.map((dur, idx) => (
+									<ToggleButton
+										key={idx}
+										size="lg"
+										id={`dur-${idx}`}
+										type="radio"
+										variant={durValue === dur.value ? "primary" : "tertiary"}
+										name="dur"
+										value={dur.value}
+										checked={durValue === dur.value}
+										onChange={(e) => setDurValue(e.currentTarget.value)}
+										className={"w-100"}
+									>
+										{dur.name}
+									</ToggleButton>
+								))}
 							</div>
 						</div>
 
@@ -57,41 +94,43 @@ export default function Sidebar(props) {
 							<div className="">
 								<span>Bedroom</span>
 								<div className="d-flex gap-3 mt-2">
-									<Button variant={props.color} className="w-100">
-										1
-									</Button>
-									<Button variant={props.color} className="w-100">
-										2
-									</Button>
-									<Button variant={props.color} className="w-100" active>
-										3
-									</Button>
-									<Button variant={props.color} className="w-100">
-										4
-									</Button>
-									<Button variant={props.color} className="w-100">
-										5+
-									</Button>
+									{bed.map((bed, idx) => (
+										<ToggleButton
+											key={idx}
+											id={`bed-${idx}`}
+											type="radio"
+											variant={bedValue === bed.value ? "primary" : "tertiary"}
+											name="bed"
+											value={bed.value}
+											checked={bedValue === bed.value}
+											onChange={(e) => setBedValue(e.currentTarget.value)}
+											className={"w-100"}
+										>
+											{bed.name}
+										</ToggleButton>
+									))}
 								</div>
 							</div>
 							<div className="">
 								<span>Bathroom</span>
 								<div className="d-flex gap-3 mt-2">
-									<Button variant={props.color} className="w-100">
-										1
-									</Button>
-									<Button variant={props.color} className="w-100" active>
-										2
-									</Button>
-									<Button variant={props.color} className="w-100">
-										3
-									</Button>
-									<Button variant={props.color} className="w-100">
-										4
-									</Button>
-									<Button variant={props.color} className="w-100">
-										5+
-									</Button>
+									{bath.map((bath, idx) => (
+										<ToggleButton
+											key={idx}
+											id={`bath-${idx}`}
+											type="radio"
+											variant={
+												bathValue === bath.value ? "primary" : "tertiary"
+											}
+											name="bath"
+											value={bath.value}
+											checked={bathValue === bath.value}
+											onChange={(e) => setBathValue(e.currentTarget.value)}
+											className={"w-100"}
+										>
+											{bath.name}
+										</ToggleButton>
+									))}
 								</div>
 							</div>
 						</Stack>

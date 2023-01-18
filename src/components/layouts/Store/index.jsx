@@ -11,7 +11,12 @@ export default function Store({ children }) {
 					<Sidebar
 						color={"tertiary"}
 						className="fixed-top z-1 bg-light p-5"
-						style={{ width: "32rem", height: "100vh", zIndex: "19" }}
+						style={{
+							width: "32rem",
+							height: "100vh",
+							paddingTop: "5rem",
+							zIndex: "19",
+						}}
 					/>
 				</div>
 				<div>
