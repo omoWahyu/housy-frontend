@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
 	ToggleButton,
 	Button,
-	ButtonGroup,
+	// ButtonGroup,
 	InputGroup,
 	Form,
 	Stack,
@@ -14,10 +13,23 @@ import { HiCalendar } from "react-icons/hi2";
 
 export default function Sidebar(props) {
 	// const [checked, setChecked] = useState(false);
-	const [durValue, setDurValue] = useState("0");
-	const [bedValue, setBedValue] = useState("0");
-	const [bathValue, setBathValue] = useState("0");
+	const [durValue, setDurValue] = useState("3");
+	const [dateValue, setDateValue] = useState("");
+	const [bedValue, setBedValue] = useState("3");
+	const [bathValue, setBathValue] = useState("2");
+	const [amenitiesValue, setAmenitiesValue] = useState("1");
+	const [budgetValue, setBudgetValue] = useState("0");
 
+	const startFind = () => {
+		props.SearchRooms({
+			duration: durValue,
+			date: dateValue,
+			bed: bedValue,
+			bath: bathValue,
+			amenities: amenitiesValue,
+			budget: budgetValue,
+		});
+	};
 	const dur = [
 		{ name: "Day", value: "1" },
 		{ name: "Month", value: "2" },
@@ -38,22 +50,28 @@ export default function Sidebar(props) {
 		{ name: "4", value: "4" },
 		{ name: "5+", value: "5" },
 	];
+
+	const amenities = [
+		{ name: "Furnished", value: "1" },
+		{ name: "Pet Allowed", value: "2" },
+		{ name: "Shared Accomodation", value: "3" },
+	];
 	return (
 		<>
 			<aside className={props.className} style={props.style}>
 				<Form>
-					<Stack gap={4}>
+					<Stack gap={4} className="mb-5">
 						<div className="">
 							<h4 className="mb-3">
 								<strong>Type of Rent</strong>
 							</h4>
 
 							<div className="d-flex gap-5">
-								{dur.map((dur, idx) => (
+								{dur.map((dur, id) => (
 									<ToggleButton
-										key={idx}
+										key={id}
 										size="lg"
-										id={`dur-${idx}`}
+										id={`dur-${id}`}
 										type="radio"
 										variant={durValue === dur.value ? "primary" : "tertiary"}
 										name="dur"
@@ -82,6 +100,7 @@ export default function Sidebar(props) {
 										type="date"
 										aria-label="Small"
 										aria-describedby="inputGroup-sizing-sm"
+										onChange={(e) => setDateValue(e.currentTarget.value)}
 									/>
 								</InputGroup>
 							</div>
@@ -94,10 +113,10 @@ export default function Sidebar(props) {
 							<div className="">
 								<span>Bedroom</span>
 								<div className="d-flex gap-3 mt-2">
-									{bed.map((bed, idx) => (
+									{bed.map((bed, id) => (
 										<ToggleButton
-											key={idx}
-											id={`bed-${idx}`}
+											key={id}
+											id={`bed-${id}`}
 											type="radio"
 											variant={bedValue === bed.value ? "primary" : "tertiary"}
 											name="bed"
@@ -114,10 +133,10 @@ export default function Sidebar(props) {
 							<div className="">
 								<span>Bathroom</span>
 								<div className="d-flex gap-3 mt-2">
-									{bath.map((bath, idx) => (
+									{bath.map((bath, id) => (
 										<ToggleButton
-											key={idx}
-											id={`bath-${idx}`}
+											key={id}
+											id={`bath-${id}`}
 											type="radio"
 											variant={
 												bathValue === bath.value ? "primary" : "tertiary"
@@ -141,45 +160,25 @@ export default function Sidebar(props) {
 							</h4>
 
 							<div className="d-flex flex-column">
-								<div className="d-flex justify-content-between">
-									<Form.Label
-										htmlFor="amenities-checkbox"
-										className="text-secondary"
-									>
-										Your vanity URL
-									</Form.Label>
-									<Form.Check
-										reverse
-										type="checkbox"
-										id={`amenities-checkbox`}
-									/>
-								</div>
-								<div className="d-flex justify-content-between">
-									<Form.Label
-										htmlFor="amenities-checkbox"
-										className="text-secondary"
-									>
-										Your vanity URL
-									</Form.Label>
-									<Form.Check
-										reverse
-										type="checkbox"
-										id={`amenities-checkbox`}
-									/>
-								</div>
-								<div className="d-flex justify-content-between">
-									<Form.Label
-										htmlFor="amenities-checkbox"
-										className="text-secondary"
-									>
-										Your vanity URL
-									</Form.Label>
-									<Form.Check
-										reverse
-										type="checkbox"
-										id={`amenities-checkbox`}
-									/>
-								</div>
+								{amenities.map((amenities, id) => (
+									<div key={id} className="d-flex justify-content-between">
+										<Form.Label
+											htmlFor={`amenities-${id}`}
+											className="text-secondary"
+										>
+											{amenities.name}
+										</Form.Label>
+
+										<Form.Check
+											reverse
+											type="checkbox"
+											value={amenities.value}
+											id={`amenities-${id}`}
+											checked={amenitiesValue === amenities.value}
+											onChange={(e) => setAmenitiesValue(e.currentTarget.value)}
+										/>
+									</div>
+								))}
 							</div>
 						</div>
 
@@ -201,12 +200,18 @@ export default function Sidebar(props) {
 										type="number"
 										placeholder="Price Range"
 										size="lg"
+										onChange={(e) => setBudgetValue(e.currentTarget.value)}
 									/>
 								</Col>
 							</Form.Group>
 						</div>
 						<Form.Group className="ms-auto">
-							<Button size="lg" className="px-4" type="submit">
+							<Button
+								size="lg"
+								className="px-4"
+								type="button"
+								onClick={startFind}
+							>
 								Apply
 							</Button>
 						</Form.Group>

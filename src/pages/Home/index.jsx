@@ -1,45 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import LayoutStore from "../../components/layouts/Store";
-import data from "../../data/rooms";
-import { Card } from "react-bootstrap";
-import { conqurency } from "../../lib/math";
+import DataRooms from "../../data/rooms";
+import { DisplayedRoom } from "../../common/DisplayedRoom";
+// import css from "home.module.css";
+import Sidebar from "../../components/sidebar/Store";
+import css from "./home.module.css";
 export default function Home() {
+	// const [data, setData] = useState({ Rooms });
+
+	const [filters, setFilters] = useState({});
+
+	const updateFilters = (searchParams) => {
+		setFilters(searchParams);
+		// console.log(DataRooms);
+	};
+
+	const filterData = (DataRooms) => {
+		const filteredData = [];
+
+		if (!filters.duration) {
+			return DataRooms;
+		}
+		for (const rooms of DataRooms) {
+			if (filters.duration !== "" && rooms.duration !== filters.duration) {
+				continue;
+			}
+			if (filters.date !== "" && rooms.date !== filters.date) {
+				continue;
+			}
+			if (filters.bed !== "" && rooms.bed !== filters.bed) {
+				continue;
+			}
+			if (filters.bath !== "" && rooms.bath !== filters.bath) {
+				continue;
+			}
+			if (filters.amenities !== "" && rooms.amenities !== filters.amenities) {
+				continue;
+			}
+			if (filters.budget !== 0 && rooms.budget !== filters.budget) {
+				continue;
+			}
+			filteredData.push(DataRooms);
+		}
+		return filterData;
+	};
+
 	return (
 		<LayoutStore>
-			<div>
-				<ul>
-					<div className="row row-cols-3">
-						{data.map((r) => {
-							return (
-								<div className="col">
-									<Card className="mb-4 mt-3 mx-1 rounded-4">
-										<span className="position-absolute px-3 py-1 bg-white rounded-2 fs-6 mt-3 ms-3">
-											Furnished
-										</span>
-										<Card.Img
-											variant="top"
-											className="p-2"
-											src={process.env.PUBLIC_URL + "/img/" + r.imageUrl}
-										/>
-										<Card.Body>
-											<Card.Title>
-												<strong>{conqurency(r.roomCost)}</strong>
-											</Card.Title>
-											<Card.Subtitle className="mb-2">
-												{r.bedRoom} Beds, {r.bathRoom} Bath, {r.roomSize} Sqft
-											</Card.Subtitle>
-											<Card.Text>
-												{r.roomTownAddress}, {r.roomDistrictAddress}
-											</Card.Text>
-											{/* <Button variant="primary">Go somewhere</Button> */}
-										</Card.Body>
-									</Card>
-								</div>
-							);
-						})}
-					</div>
-				</ul>
+			{/* <Container> */}
+			<div className="" style={{ marginTop: "5.5rem" }}>
+				<div>
+					<Sidebar
+						color={"tertiary"}
+						SearchRooms={updateFilters}
+						className="fixed-top z-1 bg-light"
+						style={{
+							width: "32rem",
+							height: "100vh",
+							padding: "9rem 3rem 0rem 3rem",
+							zIndex: "19",
+							overflow: "auto",
+						}}
+					/>
+				</div>
+				<div>
+					<section className={css.MainContent}>
+						<div className="bg-light p-lg-4">
+							<div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+								<DisplayedRoom Rooms={filterData(DataRooms)} />
+							</div>
+						</div>
+					</section>
+				</div>
 			</div>
+			{/* </Container> */}
 		</LayoutStore>
 	);
 }

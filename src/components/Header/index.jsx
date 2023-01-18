@@ -13,7 +13,7 @@ import {
 	// Row,
 	// Col,
 } from "react-bootstrap";
-import css from "./index.module.css";
+import css from "./header.module.css";
 
 export default function Header(props) {
 	return (
@@ -42,11 +42,11 @@ export default function Header(props) {
 						</Button>
 					</InputGroup>
 				</Form>
-				<Nav className="ms-auto px-4">
+				<Nav className="ms-auto px-4 d-flex gap-2">
 					<Button size="lg" variant="light">
 						Sign In
 					</Button>
-					<Button size="lg" variant="light">
+					<Button size="lg" variant="tertiary">
 						Sign Up
 					</Button>
 				</Nav>

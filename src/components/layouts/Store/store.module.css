@@ -1,0 +1,8 @@
+.MainContent {
+  margin-left: auto;
+}
+@media (min-width: 1024px) {
+.MainContent {
+  margin-left:34rem;
+}
+}
