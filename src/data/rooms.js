@@ -10,8 +10,8 @@ const Rooms = [
 		"amenities": ["Furnished", "Pet Allowed"],
 		"cost": 9000000,
 		"size": 1800,
-		"beds": 3,
-		"baths": 3
+		"bed": 3,
+		"bath": 3
 	},
 	{
 		"id": 2,
@@ -24,8 +24,8 @@ const Rooms = [
 		"amenities": ["Furnished"],
 		"cost": 9000000,
 		"size": 1800,
-		"bed": 3,
-		"bath": 3
+		"bed": 1,
+		"bath": 1
 	},
 	{
 		"id": 3,
@@ -38,8 +38,8 @@ const Rooms = [
 		"amenities": ["Furnished"],
 		"cost": 9000000,
 		"size": 1800,
-		"bed": 3,
-		"bath": 3
+		"bed": 2,
+		"bath": 1
 	},
 	{
 		"id": 4,
@@ -52,7 +52,7 @@ const Rooms = [
 		"amenities": ["Furnished"],
 		"cost": 9000000,
 		"size": 1800,
-		"bed": 3,
+		"bed": 4,
 		"bath": 3
 	},
 	{
@@ -66,8 +66,8 @@ const Rooms = [
 		"amenities": ["Furnished"],
 		"cost": 9000000,
 		"size": 1800,
-		"bed": 3,
-		"bath": 3
+		"bed": 1,
+		"bath": 1
 	},
 	{
 		"id": 6,
@@ -80,8 +80,8 @@ const Rooms = [
 		"amenities": ["Furnished"],
 		"cost": 9000000,
 		"size": 1800,
-		"bed": 3,
-		"bath": 3
+		"bed": 2,
+		"bath": 2
 	},
 	{
 		"id": 7,
@@ -95,7 +95,7 @@ const Rooms = [
 		"cost": 9000000,
 		"size": 1800,
 		"bed": 3,
-		"bath": 3
+		"bath": 2
 	},
 	{
 		"id": 8,
@@ -109,7 +109,7 @@ const Rooms = [
 		"cost": 9000000,
 		"size": 1800,
 		"bed": 3,
-		"bath": 3
+		"bath": 2
 	},
 	{
 		"id": 9,
@@ -123,7 +123,7 @@ const Rooms = [
 		"cost": 9000000,
 		"size": 1800,
 		"bed": 3,
-		"bath": 3
+		"bath": 2
 	}
 ]
 

@@ -13,23 +13,25 @@ import { HiCalendar } from "react-icons/hi2";
 
 export default function Sidebar(props) {
 	// const [checked, setChecked] = useState(false);
-	const [durValue, setDurValue] = useState("3");
-	const [dateValue, setDateValue] = useState("");
-	const [bedValue, setBedValue] = useState("3");
-	const [bathValue, setBathValue] = useState("2");
-	const [amenitiesValue, setAmenitiesValue] = useState("1");
-	const [budgetValue, setBudgetValue] = useState("0");
+	const [durationVal, setDuration] = useState("3");
+	const [dateVal, setDate] = useState("");
+	const [bedVal, setBed] = useState("3");
+	const [bathVal, setBath] = useState("3");
+	const [amenitiesVal, setAmenities] = useState("1");
+	const [budgetVal, setBudget] = useState(10000);
 
 	const startFind = () => {
-		props.SearchRooms({
-			duration: durValue,
-			date: dateValue,
-			bed: bedValue,
-			bath: bathValue,
-			amenities: amenitiesValue,
-			budget: budgetValue,
+		props.SearchRoom({
+			duration: durationVal,
+			date: dateVal,
+			bed: bedVal,
+			bath: bathVal,
+			amenities: amenitiesVal,
+			budget: budgetVal,
 		});
 	};
+	console.log(durationVal, bedVal, bathVal, amenitiesVal, budgetVal);
+
 	const dur = [
 		{ name: "Day", value: "1" },
 		{ name: "Month", value: "2" },
@@ -67,17 +69,17 @@ export default function Sidebar(props) {
 							</h4>
 
 							<div className="d-flex gap-5">
-								{dur.map((dur, id) => (
+								{dur.map((dur, idk) => (
 									<ToggleButton
-										key={id}
+										key={idk}
 										size="lg"
-										id={`dur-${id}`}
+										id={`dur-${idk}`}
 										type="radio"
-										variant={durValue === dur.value ? "primary" : "tertiary"}
+										variant={durationVal === dur.value ? "primary" : "tertiary"}
 										name="dur"
 										value={dur.value}
-										checked={durValue === dur.value}
-										onChange={(e) => setDurValue(e.currentTarget.value)}
+										checked={durationVal === dur.value}
+										onChange={(e) => setDuration(e.target.checked)}
 										className={"w-100"}
 									>
 										{dur.name}
@@ -100,7 +102,7 @@ export default function Sidebar(props) {
 										type="date"
 										aria-label="Small"
 										aria-describedby="inputGroup-sizing-sm"
-										onChange={(e) => setDateValue(e.currentTarget.value)}
+										onChange={(e) => setDate(e.target.checked)}
 									/>
 								</InputGroup>
 							</div>
@@ -118,11 +120,11 @@ export default function Sidebar(props) {
 											key={id}
 											id={`bed-${id}`}
 											type="radio"
-											variant={bedValue === bed.value ? "primary" : "tertiary"}
+											variant={bedVal === bed.value ? "primary" : "tertiary"}
 											name="bed"
 											value={bed.value}
-											checked={bedValue === bed.value}
-											onChange={(e) => setBedValue(e.currentTarget.value)}
+											checked={bedVal === bed.value}
+											onChange={(e) => setBed(e.target.value)}
 											className={"w-100"}
 										>
 											{bed.name}
@@ -138,13 +140,11 @@ export default function Sidebar(props) {
 											key={id}
 											id={`bath-${id}`}
 											type="radio"
-											variant={
-												bathValue === bath.value ? "primary" : "tertiary"
-											}
+											variant={bathVal === bath.value ? "primary" : "tertiary"}
 											name="bath"
 											value={bath.value}
-											checked={bathValue === bath.value}
-											onChange={(e) => setBathValue(e.currentTarget.value)}
+											checked={bathVal === bath.value}
+											onChange={(e) => setBath(e.target.value)}
 											className={"w-100"}
 										>
 											{bath.name}
@@ -174,8 +174,8 @@ export default function Sidebar(props) {
 											type="checkbox"
 											value={amenities.value}
 											id={`amenities-${id}`}
-											checked={amenitiesValue === amenities.value}
-											onChange={(e) => setAmenitiesValue(e.currentTarget.value)}
+											checked={amenitiesVal === amenities.value}
+											onChange={(e) => setAmenities(e.target.value)}
 										/>
 									</div>
 								))}
@@ -200,7 +200,8 @@ export default function Sidebar(props) {
 										type="number"
 										placeholder="Price Range"
 										size="lg"
-										onChange={(e) => setBudgetValue(e.currentTarget.value)}
+										value={budgetVal}
+										onChange={(e) => setBudget(e.target.value)}
 									/>
 								</Col>
 							</Form.Group>

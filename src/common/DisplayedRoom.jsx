@@ -2,15 +2,16 @@ import { Card } from "react-bootstrap";
 import { conqurency } from "../lib/math";
 
 function DisplayedRoom(props) {
+	console.log("data showed", props.Rooms);
 	return (
 		<>
-			{props.Rooms.map((room, id) => {
+			{props.Rooms.map((room, idk) => {
 				return (
-					<div key={id} className="col">
-						<Card className="mb-4 mt-3 mx-1 rounded-4">
+					<div key={idk} className="col">
+						<Card className={props.className}>
 							<div className="position-absolute mt-3 ms-3 d-flex gap-2">
-								{room.amenities.map((amenity, id) => (
-									<span key={id} className="px-3 py-1 bg-white rounded-2 fs-6">
+								{room.amenities.map((amenity, idk) => (
+									<span key={idk} className="px-3 py-1 bg-white rounded-2 fs-6">
 										{amenity}
 									</span>
 								))}
