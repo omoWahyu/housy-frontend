@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/icons/Logo.svg";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import LoginModal from "../auth/Login";
+import RegisterModal from "../auth/Register";
 
 import {
 	// Container,
@@ -18,6 +19,7 @@ import css from "./header.module.css";
 
 export default function Header(props) {
 	const [loginModal, setLoginModal] = useState(false);
+	const [registerModal, setRegisterModal] = useState(false);
 
 	return (
 		<Navbar style={props.style} expand='lg' className={props.className}>
@@ -49,13 +51,21 @@ export default function Header(props) {
 					<Button size='lg' variant='light' onClick={() => setLoginModal(true)}>
 						Sign In
 					</Button>
-					<Button size='lg' variant='tertiary'>
+					<Button
+						size='lg'
+						variant='tertiary'
+						onClick={() => setRegisterModal(true)}
+					>
 						Sign Up
 					</Button>
 				</Nav>
 			</Navbar.Collapse>
 
 			<LoginModal show={loginModal} onHide={() => setLoginModal(false)} />
+			<RegisterModal
+				show={registerModal}
+				onHide={() => setRegisterModal(false)}
+			/>
 			{/* </Container> */}
 		</Navbar>
 	);

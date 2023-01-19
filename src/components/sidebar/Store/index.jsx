@@ -58,23 +58,24 @@ export default function Sidebar(props) {
 		{ name: "Pet Allowed", value: "2" },
 		{ name: "Shared Accomodation", value: "3" },
 	];
+
 	return (
 		<>
 			<aside className={props.className} style={props.style}>
 				<Form>
-					<Stack gap={4} className="mb-5">
-						<div className="">
-							<h4 className="mb-3">
+					<Stack gap={4} className='mb-5'>
+						<div className=''>
+							<h4 className='mb-3'>
 								<strong>Type of Rent</strong>
 							</h4>
 
-							<div className="d-flex gap-5">
+							<div className='d-flex gap-4'>
 								{duration.map((durData, idk) => (
 									<ToggleButton
 										key={idk}
-										size="lg"
-										name="duration"
-										type="radio"
+										size='lg'
+										name='duration'
+										type='radio'
 										id={`dur-${idk}`}
 										variant={
 											durationVal === durData.value ? "primary" : "tertiary"
@@ -90,38 +91,38 @@ export default function Sidebar(props) {
 							</div>
 						</div>
 
-						<div className="">
-							<h4 className="">
+						<div className=''>
+							<h4 className=''>
 								<strong>Date</strong>
 							</h4>
 
-							<div className="d-flex gap-5">
-								<InputGroup size="lg" className="mb-3">
-									<InputGroup.Text id="inputGroup-sizing-sm">
+							<div className='d-flex gap-5'>
+								<InputGroup size='lg' className='mb-3'>
+									<InputGroup.Text id='inputGroup-sizing-sm'>
 										<HiCalendar />
 									</InputGroup.Text>
 									<Form.Control
-										type="date"
-										aria-label="Small"
-										aria-describedby="inputGroup-sizing-sm"
+										type='date'
+										aria-label='Small'
+										aria-describedby='inputGroup-sizing-sm'
 										onChange={(e) => setDate(e.target.value)}
 									/>
 								</InputGroup>
 							</div>
 						</div>
 
-						<Stack gap={3}>
-							<h4 className="mb-3">
+						<Stack>
+							<h4 className=''>
 								<strong>Property Room</strong>
 							</h4>
-							<div className="">
+							<div className=''>
 								<span>Bedroom</span>
-								<div className="d-flex gap-3 mt-2">
+								<div className='d-flex gap-3 mb-3'>
 									{bed.map((bedData, idk) => (
 										<ToggleButton
 											key={idk}
-											name="bed"
-											type="radio"
+											name='bed'
+											type='radio'
 											id={`bed-${idk}`}
 											variant={
 												bedVal === bedData.value ? "primary" : "tertiary"
@@ -136,14 +137,14 @@ export default function Sidebar(props) {
 									))}
 								</div>
 							</div>
-							<div className="">
+							<div className=''>
 								<span>Bathroom</span>
-								<div className="d-flex gap-3 mt-2">
+								<div className='d-flex gap-3'>
 									{bath.map((bathData, idk) => (
 										<ToggleButton
 											key={idk}
-											name="bath"
-											type="radio"
+											name='bath'
+											type='radio'
 											id={`bath-${idk}`}
 											variant={
 												bathVal === bathData.value ? "primary" : "tertiary"
@@ -160,28 +161,28 @@ export default function Sidebar(props) {
 							</div>
 						</Stack>
 
-						<div className="">
-							<h4 className="">
+						<div className=''>
+							<h4 className=''>
 								<strong>Amenities</strong>
 							</h4>
 
-							<div className="d-flex flex-column">
+							<div className='d-flex flex-column'>
 								{amenities.map((amenities, idk) => (
-									<div key={idk} className="d-flex justify-content-between">
+									<div key={idk} className='d-flex justify-content-between'>
 										<Form.Label
 											htmlFor={`amenities-${idk}`}
-											className="text-secondary"
+											className='text-secondary'
 										>
 											{amenities.name}
 										</Form.Label>
 
 										<Form.Check
 											reverse
-											name="amenities"
-											type="checkbox"
+											name='amenities'
+											type='checkbox'
 											value={amenities.name}
 											id={`amenities-${idk}`}
-											checked={amenitiesVal === amenities.name}
+											// checked={amenitiesVal === amenities.name}
 											onChange={(e) => setAmenities(e.target.value)}
 										/>
 									</div>
@@ -189,36 +190,36 @@ export default function Sidebar(props) {
 							</div>
 						</div>
 
-						<div className="">
-							<h4 className="">
+						<div className=''>
+							<h4 className=''>
 								<strong>Budget</strong>
 							</h4>
 
 							<Form.Group
 								as={Row}
-								className="mb-3 d-flex align-items-center"
-								controlId="formHorizontalEmail"
+								className='d-flex align-items-center'
+								controlId='formHorizontalEmail'
 							>
 								<Form.Label column sm={5}>
 									Less than IDR.
 								</Form.Label>
 								<Col sm={7}>
 									<Form.Control
-										size="lg"
-										name="price"
-										type="number"
-										placeholder="Price Range"
+										size='lg'
+										name='price'
+										type='number'
+										placeholder='Price Range'
 										value={budgetVal}
 										onChange={(e) => setBudget(e.target.value)}
 									/>
 								</Col>
 							</Form.Group>
 						</div>
-						<Form.Group className="ms-auto">
+						<Form.Group className='ms-auto'>
 							<Button
-								size="lg"
-								type="button"
-								className="px-4"
+								size='lg'
+								type='button'
+								className='px-4'
 								onClick={startFind}
 							>
 								Apply

@@ -1,20 +1,7 @@
-import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-// import RegisterModal from "../Register";
+import LoginModal from "../Login";
 
-const LoginModal = (props) => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		let user = {
-			username: username,
-			password: password,
-		};
-		localStorage.setItem("user", JSON.stringify(user));
-	};
-
+const RegisterModal = (props) => {
 	return (
 		<Modal
 			{...props}
@@ -28,45 +15,40 @@ const LoginModal = (props) => {
 				</Modal.Title> */}
 			{/* </Modal.Header> */}
 			<Modal.Body className='m-3'>
-				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
-				<Form onSubmit={handleSubmit}>
+				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign up</h1>
+				<Form>
 					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-						<Form.Label htmlFor='username' className='fw-bold fs-4'>
-							Username
-						</Form.Label>
-						<Form.Control
-							size='lg'
-							type='text'
-							id='username'
-							placeholder='Username'
-							className='bg-tertiary'
-							aria-describedby='passwordHelpBlock'
-							onChange={(e) => setUsername(e.target.value)}
-						/>
-					</Form.Group>
-
-					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-						<Form.Label htmlFor='Password' className='fw-bold fs-4'>
+						<Form.Label htmlFor='inputPassword5' className='fw-bold fs-4'>
 							Password
 						</Form.Label>
 						<Form.Control
 							size='lg'
 							type='password'
-							id='Password'
-							placeholder='Password'
+							id='inputPassword5'
 							className='bg-tertiary'
 							aria-describedby='passwordHelpBlock'
-							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+						<Form.Label htmlFor='inputPassword5' className='fw-bold fs-4'>
+							Password
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='password'
+							id='inputPassword5'
+							className='bg-tertiary'
+							aria-describedby='passwordHelpBlock'
 						/>
 					</Form.Group>
 
 					<Form.Group className='ms-auto mb-4'>
 						<Button
 							size='lg'
-							type='submit'
+							type='button'
 							className='mt-4 py-3 px-4 w-100'
 							// onClick={startFind}
-							// onClick={user}
 						>
 							Apply
 						</Button>
@@ -74,17 +56,17 @@ const LoginModal = (props) => {
 
 					<Form.Text id='passwordHelpBlock' muted>
 						Don't have an acount? Click{" "}
-						<span onClick={props.onHide} to=''>
+						<span onClick={props.onHide} show={RegisterModal} to=''>
 							here
 						</span>
 					</Form.Text>
 				</Form>
 			</Modal.Body>
-			{/* <Modal.Footer>
+			<Modal.Footer>
 				<Button onClick={props.onHide}>Close</Button>
-			</Modal.Footer> */}
+			</Modal.Footer>
 		</Modal>
 	);
 };
 
-export default LoginModal;
+export default RegisterModal;

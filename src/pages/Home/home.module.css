@@ -1,6 +1,9 @@
+body {
+  background-color: #ececec;
+}
 .MainContent {
   padding-top: 5.5rem;
-  height: 100vh;
+  min-height: 100vh;
   margin-left: auto;
 }
 @media (min-width: 1024px) {
