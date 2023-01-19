@@ -5,54 +5,49 @@ import { DisplayedRoom } from "../../common/DisplayedRoom";
 // import css from "home.module.css";
 import Sidebar from "../../components/sidebar/Store";
 import css from "./home.module.css";
+
 export default function Home() {
 	// const [data, setData] = useState({ Rooms });
 
 	const [filters, setFilters] = useState({});
 
-	const updateFilters = (searchParams) => {
-		setFilters(searchParams);
-		// console.log(DataRooms);
+	const updateFilters = (searchRoom) => {
+		setFilters(searchRoom);
+		console.log("test", searchRoom);
 	};
 
 	const filterData = (DataRooms) => {
-		const filteredData = [];
-
-		if (!filters.duration) {
-			return DataRooms;
-		}
-		for (const rooms of DataRooms) {
-			if (filters.duration !== "" && rooms.duration !== filters.duration) {
-				continue;
+		// console.log("filtered", filterData);
+		const filteredData = DataRooms.filter((room) => {
+			// if (filters.dration === "year") {
+			// 	return false;
+			// }
+			if (filters.bed && room.bed !== filters.bed) {
+				return false;
 			}
-			if (filters.date !== "" && rooms.date !== filters.date) {
-				continue;
+			if (filters.bath && room.bath !== filters.bath) {
+				return false;
 			}
-			if (filters.bed !== "" && rooms.bed !== filters.bed) {
-				continue;
+			if (filters.budget && room.cost > filters.budget) {
+				return false;
 			}
-			if (filters.bath !== "" && rooms.bath !== filters.bath) {
-				continue;
-			}
-			if (filters.amenities !== "" && rooms.amenities !== filters.amenities) {
-				continue;
-			}
-			if (filters.budget !== 0 && rooms.budget !== filters.budget) {
-				continue;
-			}
-			filteredData.push(DataRooms);
-		}
-		return filterData;
+			// if (filters.amenities && room.amenities !== filters.amenities) {
+			// 	return false;
+			// }
+			return true;
+		});
+		console.log("filtered", filteredData);
+		return filteredData;
 	};
 
 	return (
-		<LayoutStore>
+		<LayoutStore className={"bg-tertiary"}>
 			{/* <Container> */}
 			<div className="" style={{ marginTop: "5.5rem" }}>
 				<div>
 					<Sidebar
 						color={"tertiary"}
-						SearchRooms={updateFilters}
+						SearchRoom={updateFilters}
 						className="fixed-top z-1 bg-light"
 						style={{
 							width: "32rem",
@@ -65,9 +60,12 @@ export default function Home() {
 				</div>
 				<div>
 					<section className={css.MainContent}>
-						<div className="bg-light p-lg-4">
-							<div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-								<DisplayedRoom Rooms={filterData(DataRooms)} />
+						<div className="p-lg-4">
+							<div className="row row-cols-1 row-cols-xl-3">
+								<DisplayedRoom
+									Rooms={filterData(DataRooms)}
+									className={"mb-4 mt-3 mx-1 rounded-4"}
+								/>
 							</div>
 						</div>
 					</section>
