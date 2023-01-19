@@ -13,7 +13,7 @@ import { HiCalendar } from "react-icons/hi2";
 
 export default function Sidebar(props) {
 	// const [checked, setChecked] = useState(false);
-	const [durationVal, setDuration] = useState("3");
+	const [durationVal, setDuration] = useState("year");
 	const [dateVal, setDate] = useState("");
 	const [bedVal, setBed] = useState("3");
 	const [bathVal, setBath] = useState("3");
@@ -33,9 +33,9 @@ export default function Sidebar(props) {
 	console.log(durationVal, bedVal, bathVal, amenitiesVal, budgetVal);
 
 	const duration = [
-		{ name: "Day", value: "1" },
-		{ name: "Month", value: "2" },
-		{ name: "Year", value: "3" },
+		{ name: "Day", value: "day" },
+		{ name: "Month", value: "month" },
+		{ name: "Year", value: "year" },
 	];
 	const bed = [
 		{ name: "1", value: "1" },
