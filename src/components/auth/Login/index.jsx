@@ -30,7 +30,7 @@ const LoginModal = (props) => {
 			<Modal.Body className='m-3'>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
 				<Form onSubmit={handleSubmit}>
-					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='username' className='fw-bold fs-4'>
 							Username
 						</Form.Label>
@@ -45,7 +45,7 @@ const LoginModal = (props) => {
 						/>
 					</Form.Group>
 
-					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='Password' className='fw-bold fs-4'>
 							Password
 						</Form.Label>
@@ -74,7 +74,7 @@ const LoginModal = (props) => {
 
 					<Form.Text id='passwordHelpBlock' muted>
 						Don't have an acount? Click{" "}
-						<span onClick={props.onHide} to=''>
+						<span closeButton onclick='call the new div here'>
 							here
 						</span>
 					</Form.Text>
