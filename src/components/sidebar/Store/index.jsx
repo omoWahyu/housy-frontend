@@ -17,8 +17,8 @@ export default function Sidebar(props) {
 	const [dateVal, setDate] = useState("");
 	const [bedVal, setBed] = useState("3");
 	const [bathVal, setBath] = useState("3");
-	const [amenitiesVal, setAmenities] = useState("1");
-	const [budgetVal, setBudget] = useState(10000);
+	const [amenitiesVal, setAmenities] = useState("Furnished");
+	const [budgetVal, setBudget] = useState(9000000);
 
 	const startFind = () => {
 		props.SearchRoom({
@@ -32,7 +32,7 @@ export default function Sidebar(props) {
 	};
 	console.log(durationVal, bedVal, bathVal, amenitiesVal, budgetVal);
 
-	const dur = [
+	const duration = [
 		{ name: "Day", value: "1" },
 		{ name: "Month", value: "2" },
 		{ name: "Year", value: "3" },
@@ -69,20 +69,22 @@ export default function Sidebar(props) {
 							</h4>
 
 							<div className="d-flex gap-5">
-								{dur.map((dur, idk) => (
+								{duration.map((durData, idk) => (
 									<ToggleButton
 										key={idk}
 										size="lg"
-										id={`dur-${idk}`}
+										name="duration"
 										type="radio"
-										variant={durationVal === dur.value ? "primary" : "tertiary"}
-										name="dur"
-										value={dur.value}
-										checked={durationVal === dur.value}
-										onChange={(e) => setDuration(e.target.checked)}
+										id={`dur-${idk}`}
+										variant={
+											durationVal === durData.value ? "primary" : "tertiary"
+										}
+										value={durData.value}
+										checked={durationVal === durData.value}
+										onChange={(e) => setDuration(e.target.value)}
 										className={"w-100"}
 									>
-										{dur.name}
+										{durData.name}
 									</ToggleButton>
 								))}
 							</div>
@@ -102,7 +104,7 @@ export default function Sidebar(props) {
 										type="date"
 										aria-label="Small"
 										aria-describedby="inputGroup-sizing-sm"
-										onChange={(e) => setDate(e.target.checked)}
+										onChange={(e) => setDate(e.target.value)}
 									/>
 								</InputGroup>
 							</div>
@@ -115,19 +117,21 @@ export default function Sidebar(props) {
 							<div className="">
 								<span>Bedroom</span>
 								<div className="d-flex gap-3 mt-2">
-									{bed.map((bed, id) => (
+									{bed.map((bedData, idk) => (
 										<ToggleButton
-											key={id}
-											id={`bed-${id}`}
-											type="radio"
-											variant={bedVal === bed.value ? "primary" : "tertiary"}
+											key={idk}
 											name="bed"
-											value={bed.value}
-											checked={bedVal === bed.value}
+											type="radio"
+											id={`bed-${idk}`}
+											variant={
+												bedVal === bedData.value ? "primary" : "tertiary"
+											}
+											value={bedData.value}
+											checked={bedVal === bedData.value}
 											onChange={(e) => setBed(e.target.value)}
 											className={"w-100"}
 										>
-											{bed.name}
+											{bedData.name}
 										</ToggleButton>
 									))}
 								</div>
@@ -135,19 +139,21 @@ export default function Sidebar(props) {
 							<div className="">
 								<span>Bathroom</span>
 								<div className="d-flex gap-3 mt-2">
-									{bath.map((bath, id) => (
+									{bath.map((bathData, idk) => (
 										<ToggleButton
-											key={id}
-											id={`bath-${id}`}
-											type="radio"
-											variant={bathVal === bath.value ? "primary" : "tertiary"}
+											key={idk}
 											name="bath"
-											value={bath.value}
-											checked={bathVal === bath.value}
+											type="radio"
+											id={`bath-${idk}`}
+											variant={
+												bathVal === bathData.value ? "primary" : "tertiary"
+											}
+											value={bathData.value}
+											checked={bathVal === bathData.value}
 											onChange={(e) => setBath(e.target.value)}
 											className={"w-100"}
 										>
-											{bath.name}
+											{bathData.name}
 										</ToggleButton>
 									))}
 								</div>
@@ -160,10 +166,10 @@ export default function Sidebar(props) {
 							</h4>
 
 							<div className="d-flex flex-column">
-								{amenities.map((amenities, id) => (
-									<div key={id} className="d-flex justify-content-between">
+								{amenities.map((amenities, idk) => (
+									<div key={idk} className="d-flex justify-content-between">
 										<Form.Label
-											htmlFor={`amenities-${id}`}
+											htmlFor={`amenities-${idk}`}
 											className="text-secondary"
 										>
 											{amenities.name}
@@ -171,10 +177,11 @@ export default function Sidebar(props) {
 
 										<Form.Check
 											reverse
+											name="amenities"
 											type="checkbox"
-											value={amenities.value}
-											id={`amenities-${id}`}
-											checked={amenitiesVal === amenities.value}
+											value={amenities.name}
+											id={`amenities-${idk}`}
+											checked={amenitiesVal === amenities.name}
 											onChange={(e) => setAmenities(e.target.value)}
 										/>
 									</div>
@@ -197,9 +204,10 @@ export default function Sidebar(props) {
 								</Form.Label>
 								<Col sm={7}>
 									<Form.Control
+										size="lg"
+										name="price"
 										type="number"
 										placeholder="Price Range"
-										size="lg"
 										value={budgetVal}
 										onChange={(e) => setBudget(e.target.value)}
 									/>
@@ -209,8 +217,8 @@ export default function Sidebar(props) {
 						<Form.Group className="ms-auto">
 							<Button
 								size="lg"
-								className="px-4"
 								type="button"
+								className="px-4"
 								onClick={startFind}
 							>
 								Apply

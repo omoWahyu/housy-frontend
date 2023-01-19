@@ -9,44 +9,74 @@ import css from "./home.module.css";
 export default function Home() {
 	// const [data, setData] = useState({ Rooms });
 
-	const [filters, setFilters] = useState(DataRooms);
+	const [filters, setFilters] = useState({});
 
-	const updateFilters = (searchParams) => {
-		setFilters(searchParams);
-		console.log(DataRooms);
+	const updateFilters = (searchRoom) => {
+		setFilters(searchRoom);
+		console.log("test", searchRoom);
 	};
+
+	// const filterData = (DataRooms) => {
+	// 	const filteredData = [];
+
+	// 	if (!filters.bed) {
+	// 		return DataRooms;
+	// 	}
+	// 	for (const rooms of DataRooms) {
+	// 		// if (filters.duration !== "" && rooms.duration !== filters.duration) {
+	// 		// 	continue;
+	// 		// }
+	// 		// if (filters.date !== "" && rooms.date !== filters.date) {
+	// 		// 	continue;
+	// 		// }
+	// 		if (filters.bed !== "" && rooms.bed !== filters.bed) {
+	// 			continue;
+	// 		}
+	// 		if (filters.bath !== "" && rooms.bath !== filters.bath) {
+	// 			continue;
+	// 		}
+	// 		// if (filters.amenities !== "" && rooms.amenities !== filters.amenities) {
+	// 		// 	continue;
+	// 		// }
+	// 		if (filters.budget !== 0 && rooms.budget !== filters.budget) {
+	// 			continue;
+	// 		}
+	// 		filteredData.push(rooms);
+	// 	}
+	// 	console.log("halo", filteredData);
+	// 	console.log("halo", DataRooms);
+	// 	return filteredData;
+	// };
 
 	const filterData = (DataRooms) => {
-		const filteredData = [];
-
-		if (!filters.bed) {
-			return DataRooms;
-		}
-		for (const rooms of DataRooms) {
-			// if (filters.duration !== "" && rooms.duration !== filters.duration) {
-			// 	continue;
-			// }
-			// if (filters.date !== "" && rooms.date !== filters.date) {
-			// 	continue;
-			// }
-			if (filters.bed !== "" && rooms.bed !== filters.bed) {
-				continue;
+		// console.log("filtered", filterData);
+		const filteredData = DataRooms.filter((room) => {
+			if (filters.bed && room.bed !== filters.bed) {
+				return false;
 			}
-			if (filters.bath !== "" && rooms.bath !== filters.bath) {
-				continue;
+			if (filters.bath && room.bath !== filters.bath) {
+				return false;
 			}
-			// if (filters.amenities !== "" && rooms.amenities !== filters.amenities) {
-			// 	continue;
+			// if (filters.budget && room.budget !== filters.budget) {
+			// 	return false;
 			// }
-			if (filters.budget !== 0 && rooms.budget !== filters.budget) {
-				continue;
+			if (filters.amenities && room.amenities !== filters.amenities) {
+				return false;
 			}
-			filteredData.push(DataRooms);
-		}
-		console.log("halo", filteredData);
-		console.log("halo", DataRooms);
+			return true;
+		});
+		console.log("filtered", filteredData);
 		return filteredData;
 	};
+
+	// const filterData = (DataRooms) => {
+	// 	const filteredData = [];
+	// 	if (filters.duration !== "") {
+	// 		filteredData = filteredData.filter(
+	// 			(item) => item.duration === durationVal
+	// 		);
+	// 	}
+	// };
 
 	return (
 		<LayoutStore className={"bg-tertiary"}>
