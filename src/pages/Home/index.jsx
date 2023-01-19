@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import LayoutStore from "../../components/layouts/Store";
 import DataRooms from "../../data/rooms";
-import { DisplayedRoom } from "../../common/DisplayedRoom";
+import { DisplayedRoom } from "../../components/card/Store";
 // import css from "home.module.css";
 import Sidebar from "../../components/sidebar/Store";
+
 import css from "./home.module.css";
 
 export default function Home() {
@@ -43,12 +44,12 @@ export default function Home() {
 	return (
 		<LayoutStore className={"bg-tertiary"}>
 			{/* <Container> */}
-			<div className="" style={{ marginTop: "5.5rem" }}>
+			<div className=''>
 				<div>
 					<Sidebar
 						color={"tertiary"}
 						SearchRoom={updateFilters}
-						className="fixed-top z-1 bg-light"
+						className='fixed-top z-1 bg-light'
 						style={{
 							width: "32rem",
 							height: "100vh",
@@ -60,8 +61,8 @@ export default function Home() {
 				</div>
 				<div>
 					<section className={css.MainContent}>
-						<div className="p-lg-4">
-							<div className="row row-cols-1 row-cols-xl-3">
+						<div className='p-lg-4'>
+							<div className='row row-cols-1 row-cols-xl-3'>
 								<DisplayedRoom
 									Rooms={filterData(DataRooms)}
 									className={"mb-4 mt-3 mx-1 rounded-4"}
