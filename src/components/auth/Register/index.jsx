@@ -43,14 +43,14 @@ const RegisterModal = (props) => {
 		if (!isRegistered.address) {
 			alert("Form Address At is required!");
 		}
-		if (checkAccount.username !== isRegistered.username) {
+		if (!checkAccount) {
 			props.onHide();
 			localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
 			alert("Registration successful!");
+			props.togglelogin();
 		} else {
 			alert("This Account is Already Registered");
 		}
-		// setLoginModal(true);
 	};
 	const ListAsData = [{ value: "Tenant" }, { value: "Admin" }];
 	const GenderData = [{ value: "Laki-laki" }, { value: "Perempuan" }];

@@ -21,12 +21,12 @@ const LoginModal = (props) => {
 			alert("Form Password is required!");
 		} else if (
 			checkLogin.password !== isLogin.password ||
-			checkLogin.fullname !== isLogin.username
+			checkLogin.username !== isLogin.username
 		) {
 			alert("Username or Password is invalid");
 		} else if (
 			checkLogin.password === isLogin.password &&
-			checkLogin.fullname === isLogin.username
+			checkLogin.username === isLogin.username
 		) {
 			alert("Berhasil Login");
 			props.onHide();
@@ -34,6 +34,11 @@ const LoginModal = (props) => {
 		} else {
 			alert("Your Account is not Registered!");
 		}
+	};
+
+	const goRegister = () => {
+		props.onHide();
+		props.gotoregister();
 	};
 
 	return (
@@ -88,7 +93,13 @@ const LoginModal = (props) => {
 					</Form.Group>
 
 					<Form.Text id='passwordHelpBlock' muted>
-						Don't have an acount? Click <span>here</span>
+						Don't have an acount? Click
+						<span
+							onClick={(e) => goRegister()}
+							className={"btn btn-link pb-2 px-1"}
+						>
+							here
+						</span>
 					</Form.Text>
 				</Form>
 			</Modal.Body>

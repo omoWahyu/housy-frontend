@@ -19,7 +19,7 @@ function DisplayedRoom(props) {
 							<Card.Img
 								variant='top'
 								className='p-2'
-								src={require("../../../assets/image/rooms/" + room.imageUrl)}
+								src={process.env.PUBLIC_URL + "/img/rooms/" + room.imageUrl}
 							/>
 							<Card.Body>
 								<Card.Title>

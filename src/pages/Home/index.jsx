@@ -95,7 +95,7 @@ export default function Home() {
 				<div>
 					<section className={"MainContent"}>
 						<div className='p-lg-4'>
-							<div className='row row-cols-1 row-cols-xl-3'>
+							<div className='row row-cols-1 row-cols-xxl-3'>
 								<DisplayedRoom
 									Rooms={filterData(DataRooms)}
 									className={"mb-4 mt-3 mx-1 rounded-4"}

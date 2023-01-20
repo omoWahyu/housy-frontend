@@ -1,0 +1,49 @@
+.navbarBrand {
+  margin-right: auto;
+
+}
+@media (min-width: 1400px) {
+  .navbarBrand{
+    margin-right:25rem;
+    padding-left: 3rem;
+  }
+}
+
+.inputGroup{
+  width:100%;
+  margin-top: 20px;
+  padding: auto 3rem;
+}
+
+@media (min-width: 1400px) {
+  .inputGroup{
+    width:28rem;
+    margin-top: auto;
+  }
+}
+
+.dropMenu {
+  display: inline-flex;
+  gap: 1rem;
+}
+.dropdown-menu::before {
+  position: absolute;
+  top: -7px;
+  right: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #CCC;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+.dropdown-menu::after {
+   position: absolute;
+   top: -6px;
+   right: 10px;
+   display: inline-block;
+   border-right: 6px solid transparent;
+   border-bottom: 6px solid white;
+   border-left: 6px solid transparent;
+   content: '';
+ }
