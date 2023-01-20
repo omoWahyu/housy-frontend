@@ -17,8 +17,35 @@ const RegisterModal = (props) => {
 	// Custom?
 
 	const RegistSubmit = (e) => {
-		localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
-		alert("Registration successful!");
+		if (!isRegistered.fullname) {
+			alert("Form Fullname perlu diisi!");
+		}
+		if (!isRegistered.username) {
+			alert("Form Username perlu diisi!");
+		}
+		if (!isRegistered.email) {
+			alert("Form Email perlu diisi!");
+		}
+
+		if (!isRegistered.password) {
+			alert("Form Password perlu diisi!");
+		} else {
+			props.onHide();
+			localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
+			alert("Registration successful!");
+		}
+		if (!isRegistered.list) {
+			alert("Form List As perlu diisi!");
+		}
+		if (!isRegistered.gender) {
+			alert("Form Gender At perlu diisi!");
+		}
+		if (!isRegistered.phone) {
+			alert("Form Phone At perlu diisi!");
+		}
+		if (!isRegistered.address) {
+			alert("Form Address At perlu diisi!");
+		}
 		// setLoginModal(true);
 	};
 	const ListAsData = [{ value: "Tenant" }, { value: "Admin" }];
@@ -32,7 +59,7 @@ const RegisterModal = (props) => {
 		>
 			<Modal.Body className={css.Modal}>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign up</h1>
-				<Form onSubmit={RegistSubmit} className={css.Form}>
+				<Form className={css.Form}>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='fullname' className='fw-bold fs-4'>
 							Full Name
@@ -212,9 +239,9 @@ const RegisterModal = (props) => {
 					<Form.Group className='ms-auto mb-4'>
 						<Button
 							size='lg'
-							type='submit'
+							type='button'
 							className='mt-4 py-3 px-4 w-100'
-							onClick={props.onHide}
+							onClick={RegistSubmit}
 						>
 							Apply
 						</Button>
