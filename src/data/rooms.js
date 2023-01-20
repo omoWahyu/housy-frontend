@@ -1,5 +1,6 @@
 const Rooms = [
 	{
+		"id": 1,
 		"name": "House Astina",
 		"imageUrl": "image1.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -13,6 +14,7 @@ const Rooms = [
 		"bath": "3"
 	},
 	{
+		"id": 2,
 		"name": "House Astina",
 		"imageUrl": "image2.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -26,6 +28,7 @@ const Rooms = [
 		"bath": "1"
 	},
 	{
+		"id": 3,
 		"name": "House Astina",
 		"imageUrl": "image3.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -39,6 +42,7 @@ const Rooms = [
 		"bath": "1"
 	},
 	{
+		"id": 4,
 		"name": "House Astina",
 		"imageUrl": "image4.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -52,6 +56,7 @@ const Rooms = [
 		"bath": "3"
 	},
 	{
+		"id": 5,
 		"name": "House Astina",
 		"imageUrl": "image5.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -65,6 +70,7 @@ const Rooms = [
 		"bath": "1"
 	},
 	{
+		"id": 6,
 		"name": "House Astina",
 		"imageUrl": "image6.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -78,6 +84,7 @@ const Rooms = [
 		"bath": "2"
 	},
 	{
+		"id": 7,
 		"name": "House Astina",
 		"imageUrl": "image7.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -91,6 +98,7 @@ const Rooms = [
 		"bath": "2"
 	},
 	{
+		"id": 8,
 		"name": "House Astina",
 		"imageUrl": "image8.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
@@ -104,6 +112,7 @@ const Rooms = [
 		"bath": "2"
 	},
 	{
+		"id": 9,
 		"name": "House Astina",
 		"imageUrl": "image9.png",
 		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",

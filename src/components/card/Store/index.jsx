@@ -1,4 +1,6 @@
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 import { conqurency } from "../../../lib/math";
 
 function DisplayedRoom(props) {
@@ -7,7 +9,12 @@ function DisplayedRoom(props) {
 		<>
 			{props.Rooms.map((room, idk) => {
 				return (
-					<div key={idk} className='col'>
+					<Link
+						to='/mybooking'
+						key={idk}
+						className='col'
+						style={{ textDecoration: "none" }}
+					>
 						<Card className={props.className}>
 							<div className='position-absolute mt-3 ms-3 d-flex gap-2'>
 								{room.amenities.map((amenity, idk) => (
@@ -23,7 +30,7 @@ function DisplayedRoom(props) {
 							/>
 							<Card.Body>
 								<Card.Title>
-									<strong>{conqurency(room.cost)}</strong>
+									<strong>{conqurency(room.cost)} / Year</strong>
 								</Card.Title>
 								<Card.Subtitle className='mb-2'>
 									{room.bed} Beds, {room.bath} Bath, {room.size} Sqft
@@ -34,7 +41,7 @@ function DisplayedRoom(props) {
 								{/* <Button variant="primary">Go somewhere</Button> */}
 							</Card.Body>
 						</Card>
-					</div>
+					</Link>
 				);
 			})}
 		</>

@@ -1,35 +1,49 @@
-.navbarBrand {
+.MaxWidth {
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1920px !important;
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.NavbarBrand {
+  padding-left: 2rem;
   margin-right: auto;
 
 }
 @media (min-width: 1400px) {
-  .navbarBrand{
+  .NavbarBrand{
     margin-right:25rem;
     padding-left: 3rem;
   }
 }
 
-.inputGroup{
+.InputGroup{
   width:100%;
   margin-top: 20px;
   padding: auto 3rem;
 }
 
 @media (min-width: 1400px) {
-  .inputGroup{
+  .InputGroup{
     width:28rem;
     margin-top: auto;
   }
 }
 
-.dropMenu {
+.DropMenu {
   display: inline-flex;
   gap: 1rem;
 }
-.dropdown-menu{
+.DropdownMenu{
   margin-top: .5rem !important;
 }
-.dropdown-menu::before {
+.DropdownMenu::before {
   position: absolute;
   top: -13px;
   right: 12px;
@@ -40,7 +54,7 @@
   border-bottom-color: rgba(0, 0, 0, 0.2);
   content: '';
 }
-.dropdown-menu::after {
+.DropdownMenu::after {
    position: absolute;
    top: -11.5px;
    right: 13px;

@@ -1,56 +1,13 @@
 import React, { useState } from "react";
-import LayoutStore from "../../components/layouts/Store";
+import LayoutStore from "../../components/layouts/withSearchbar";
 import DataRooms from "../../data/rooms";
 import { DisplayedRoom } from "../../components/card/Store";
 // import css from "home.module.css";
 import Sidebar from "../../components/sidebar/Store";
 
-import "./home.css";
+import css from "./home.module.css";
 
 export default function Home() {
-	// const [data, setData] = useState({ Rooms });
-
-	// const filterData = (DataRooms) => {
-	// 	const filteredData = [];
-
-	// 	if (!filters.bed) {
-	// 		return DataRooms;
-	// 	}
-	// 	for (const rooms of DataRooms) {
-	// 		// if (filters.duration !== "" && rooms.duration !== filters.duration) {
-	// 		// 	continue;
-	// 		// }
-	// 		// if (filters.date !== "" && rooms.date !== filters.date) {
-	// 		// 	continue;
-	// 		// }
-	// 		if (filters.bed !== "" && rooms.bed !== filters.bed) {
-	// 			continue;
-	// 		}
-	// 		if (filters.bath !== "" && rooms.bath !== filters.bath) {
-	// 			continue;
-	// 		}
-	// 		// if (filters.amenities !== "" && rooms.amenities !== filters.amenities) {
-	// 		// 	continue;
-	// 		// }
-	// 		if (filters.budget !== 0 && rooms.budget !== filters.budget) {
-	// 			continue;
-	// 		}
-	// 		filteredData.push(rooms);
-	// 	}
-	// 	console.log("halo", filteredData);
-	// 	console.log("halo", DataRooms);
-	// 	return filteredData;
-	// };
-
-	// const filterData = (DataRooms) => {
-	// 	const filteredData = [];
-	// 	if (filters.duration !== "") {
-	// 		filteredData = filteredData.filter(
-	// 			(item) => item.duration === durationVal
-	// 		);
-	// 	}
-	// };
-
 	const [filters, setFilters] = useState({});
 
 	const updateFilters = (searchRoom) => {
@@ -85,20 +42,17 @@ export default function Home() {
 	return (
 		<LayoutStore className={"bg-tertiary"}>
 			{/* <Container> */}
-			<div className=''>
+			<div className={css.MaxWidth}>
 				<div>
-					<Sidebar
-						SearchRoom={updateFilters}
-						className='fixed-top z-1 bg-light SideItem'
-					/>
+					<Sidebar SearchRoom={updateFilters} className={css.SideItem} />
 				</div>
 				<div>
-					<section className={"MainContent"}>
+					<section className={css.MainWithSidebar}>
 						<div className='p-lg-4'>
 							<div className='row row-cols-1 row-cols-xxl-3'>
 								<DisplayedRoom
 									Rooms={filterData(DataRooms)}
-									className={"mb-4 mt-3 mx-1 rounded-4"}
+									className={css.RoomLink}
 								/>
 							</div>
 						</div>

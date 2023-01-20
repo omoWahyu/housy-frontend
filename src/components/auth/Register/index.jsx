@@ -167,6 +167,7 @@ const RegisterModal = (props) => {
 								})
 							}
 						>
+							<option>--Choose--</option>
 							{ListAsData.map((option, idk) => (
 								<option key={idk} value={option.value}>
 									{option.value}
@@ -193,6 +194,7 @@ const RegisterModal = (props) => {
 								})
 							}
 						>
+							<option>--Choose--</option>
 							{GenderData.map((option, idk) => (
 								<option key={idk} value={option.value}>
 									{option.value}

@@ -1,0 +1,44 @@
+.MaxWidth {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  max-width: 1920px;
+}
+.MainWithSidebar {
+  padding-top: 5.5rem;
+  min-height: 100vh;
+  /* background-color: #ececec; */
+  margin-left: auto;
+}
+@media (min-width: 1024px) {
+.MainWithSidebar {
+  margin-left:34rem;
+}
+}
+
+.SideItem {
+  position: absolute;
+  top: 0;
+  z-index: 19;
+  width: 32rem;
+  height: 100vh;
+  padding: 8rem 3rem 3rem 3rem;
+  overflow: auto;
+  background-color: #f8f9fa;
+  /* overflow: auto; */
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none; 
+}
+.SideItem::-webkit-scrollbar { width: 0 !important }
+
+.RoomLink {
+  color: black;
+  margin: 1.5rem .35rem .75rem;
+  border-radius: .75rem;
+  transition: all 200ms ease-in-out;
+}
+
+.RoomLink:hover {
+  background-color: #ece8f1;
+color: black;
+}
