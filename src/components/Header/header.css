@@ -26,24 +26,27 @@
   display: inline-flex;
   gap: 1rem;
 }
+.dropdown-menu{
+  margin-top: .5rem !important;
+}
 .dropdown-menu::before {
   position: absolute;
-  top: -7px;
-  right: 9px;
+  top: -13px;
+  right: 12px;
   display: inline-block;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #CCC;
-  border-left: 7px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 13px solid #CCC;
+  border-left: 13px solid transparent;
   border-bottom-color: rgba(0, 0, 0, 0.2);
   content: '';
 }
 .dropdown-menu::after {
    position: absolute;
-   top: -6px;
-   right: 10px;
+   top: -11.5px;
+   right: 13px;
    display: inline-block;
-   border-right: 6px solid transparent;
-   border-bottom: 6px solid white;
-   border-left: 6px solid transparent;
+   border-right: 12.3px solid transparent;
+   border-bottom: 12.3px solid white;
+   border-left: 12.3px solid transparent;
    content: '';
  }

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 import logo from "../../assets/icons/Logo.svg";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FaRegUser, FaRegCalendar } from "react-icons/fa";
@@ -13,7 +15,6 @@ import {
 	Button,
 	InputGroup,
 	Form,
-	DropdownButton,
 	Dropdown,
 } from "react-bootstrap";
 import "./header.css";
@@ -22,11 +23,18 @@ export default function Header(props) {
 	const [loginModal, setLoginModal] = useState(false);
 	const [registerModal, setRegisterModal] = useState(false);
 
+	const redirect = useNavigate();
+
 	const gotoLogin = () => {
 		setLoginModal(true);
 	};
 	const gotoRegistration = () => {
 		setRegisterModal(true);
+	};
+	const isLogout = () => {
+		localStorage.removeItem("isLogin");
+		alert("Logout Success, Bye👋");
+		redirect.push("/");
 	};
 	return (
 		<Navbar style={props.style} expand='xxl' className={props.className}>
@@ -80,29 +88,33 @@ export default function Header(props) {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align='end' className='dropdown-menu'>
-								<Dropdown.Item href='#/action-1' className='dropMenu '>
+								<Dropdown.Item as={Link} to='/profile' className='dropMenu '>
 									<div className='rounded-pill bg-tertiary'>
 										<FaRegUser className='m-2 text-primary' />
-									</div>{" "}
+									</div>
 									<span className='fs-5 fw-semibold'>Profile</span>
 								</Dropdown.Item>
-								<Dropdown.Item href='#/action-1' className='dropMenu'>
+								<Dropdown.Item as={Link} to='/mybooking' className='dropMenu'>
 									<div className='rounded-pill bg-tertiary'>
 										<FaRegCalendar className='m-2 text-primary' />
-									</div>{" "}
+									</div>
 									<span className='fs-5 fw-semibold'>My Booking</span>
 								</Dropdown.Item>
-								<Dropdown.Item href='#/action-1' className='dropMenu'>
+								<Dropdown.Item as={Link} to='/history' className='dropMenu'>
 									<div className='rounded-pill bg-tertiary'>
 										<TbHistory className='m-2 text-primary' />
-									</div>{" "}
+									</div>
 									<span className='fs-5 fw-semibold'>History</span>
 								</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item href='#/action-1' className='dropMenu'>
+								<Dropdown.Item
+									href='#/action-1'
+									onClick={isLogout}
+									className='dropMenu'
+								>
 									<div className='rounded-pill bg-tertiary'>
 										<IoLogOut className='m-2 text-primary' />
-									</div>{" "}
+									</div>
 									<span className='fs-5 fw-semibold'>Logout</span>
 								</Dropdown.Item>
 							</Dropdown.Menu>

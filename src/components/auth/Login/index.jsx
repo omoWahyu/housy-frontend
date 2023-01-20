@@ -24,15 +24,12 @@ const LoginModal = (props) => {
 			checkLogin.username !== isLogin.username
 		) {
 			alert("Username or Password is invalid");
-		} else if (
-			checkLogin.password === isLogin.password &&
-			checkLogin.username === isLogin.username
-		) {
+		} else if (!checkLogin) {
+			alert("Your Account is not Registered!");
+		} else {
 			alert("Berhasil Login");
 			props.onHide();
 			localStorage.setItem("isLogin", JSON.stringify(isLogin));
-		} else {
-			alert("Your Account is not Registered!");
 		}
 	};
 

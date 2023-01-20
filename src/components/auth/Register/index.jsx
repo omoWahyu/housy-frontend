@@ -47,7 +47,7 @@ const RegisterModal = (props) => {
 			props.onHide();
 			localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
 			alert("Registration successful!");
-			props.togglelogin();
+			props.gotologin();
 		} else {
 			alert("This Account is Already Registered");
 		}
