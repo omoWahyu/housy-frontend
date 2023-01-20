@@ -16,35 +16,39 @@ const RegisterModal = (props) => {
 	});
 	// Custom?
 
+	const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
+
 	const RegistSubmit = (e) => {
 		if (!isRegistered.fullname) {
-			alert("Form Fullname perlu diisi!");
+			alert("Form Fullname is required!");
 		}
 		if (!isRegistered.username) {
-			alert("Form Username perlu diisi!");
+			alert("Form Username is required!");
 		}
 		if (!isRegistered.email) {
-			alert("Form Email perlu diisi!");
+			alert("Form Email is required!");
 		}
-
 		if (!isRegistered.password) {
-			alert("Form Password perlu diisi!");
-		} else {
+			alert("Form Password is required!");
+		}
+		if (!isRegistered.list) {
+			alert("Form List As is required!");
+		}
+		if (!isRegistered.gender) {
+			alert("Form Gender At is required!");
+		}
+		if (!isRegistered.phone) {
+			alert("Form Phone At is required!");
+		}
+		if (!isRegistered.address) {
+			alert("Form Address At is required!");
+		}
+		if (checkAccount.username !== isRegistered.username) {
 			props.onHide();
 			localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
 			alert("Registration successful!");
-		}
-		if (!isRegistered.list) {
-			alert("Form List As perlu diisi!");
-		}
-		if (!isRegistered.gender) {
-			alert("Form Gender At perlu diisi!");
-		}
-		if (!isRegistered.phone) {
-			alert("Form Phone At perlu diisi!");
-		}
-		if (!isRegistered.address) {
-			alert("Form Address At perlu diisi!");
+		} else {
+			alert("This Account is Already Registered");
 		}
 		// setLoginModal(true);
 	};
@@ -164,7 +168,9 @@ const RegisterModal = (props) => {
 							}
 						>
 							{ListAsData.map((option, idk) => (
-								<option key={idk}>{option.value}</option>
+								<option key={idk} value={option.value}>
+									{option.value}
+								</option>
 							))}
 						</Form.Select>
 					</Form.Group>
@@ -188,7 +194,9 @@ const RegisterModal = (props) => {
 							}
 						>
 							{GenderData.map((option, idk) => (
-								<option key={idk}>{option.value}</option>
+								<option key={idk} value={option.value}>
+									{option.value}
+								</option>
 							))}
 						</Form.Select>
 					</Form.Group>
@@ -246,10 +254,6 @@ const RegisterModal = (props) => {
 							Apply
 						</Button>
 					</Form.Group>
-
-					<Form.Text id='passwordHelpBlock' muted>
-						Don't have an acount? Click <span>here</span>
-					</Form.Text>
 				</Form>
 			</Modal.Body>
 		</Modal>

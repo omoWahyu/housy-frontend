@@ -15,15 +15,15 @@ const LoginModal = (props) => {
 		const checkLogin = JSON.parse(localStorage.getItem("isRegistered"));
 
 		if (!isLogin.username) {
-			alert("Form Username perlu diisi!");
+			alert("Form Username is required!");
 		}
 		if (!isLogin.password) {
-			alert("Form Password perlu diisi!");
+			alert("Form Password is required!");
 		} else if (
 			checkLogin.password !== isLogin.password ||
 			checkLogin.fullname !== isLogin.username
 		) {
-			alert("Username atau Passwordmu tidak cocok");
+			alert("Username or Password is invalid");
 		} else if (
 			checkLogin.password === isLogin.password &&
 			checkLogin.fullname === isLogin.username
@@ -32,7 +32,7 @@ const LoginModal = (props) => {
 			props.onHide();
 			localStorage.setItem("isLogin", JSON.stringify(isLogin));
 		} else {
-			alert("Kamu Belum Registrasi!");
+			alert("Your Account is not Registered!");
 		}
 	};
 
