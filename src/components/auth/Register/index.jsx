@@ -1,7 +1,28 @@
+import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import LoginModal from "../Login";
+
+import css from "./Register.module.css";
 
 const RegisterModal = (props) => {
+	const [isRegistered, setIsRegistered] = useState({
+		fullname: "",
+		username: "",
+		email: "",
+		password: "",
+		list: "",
+		gender: "",
+		phone: "",
+		address: "",
+	});
+	// Custom?
+
+	const RegistSubmit = (e) => {
+		localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
+		alert("Registration successful!");
+		// setLoginModal(true);
+	};
+	const ListAsData = [{ value: "Tenant" }, { value: "Admin" }];
+	const GenderData = [{ value: "Laki-laki" }, { value: "Perempuan" }];
 	return (
 		<Modal
 			{...props}
@@ -9,62 +30,201 @@ const RegisterModal = (props) => {
 			aria-labelledby='contained-modal-title-vcenter'
 			centered
 		>
-			{/* <Modal.Header closeButton> */}
-			{/* <Modal.Title id='contained-modal-title-vcenter' className=''>
-					<strong className='text-center'>Login</strong>
-				</Modal.Title> */}
-			{/* </Modal.Header> */}
-			<Modal.Body className='m-3'>
+			<Modal.Body className={css.Modal}>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign up</h1>
-				<Form>
-					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-						<Form.Label htmlFor='inputPassword5' className='fw-bold fs-4'>
-							Password
+				<Form onSubmit={RegistSubmit} className={css.Form}>
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='fullname' className='fw-bold fs-4'>
+							Full Name
 						</Form.Label>
 						<Form.Control
+							autoFocus
 							size='lg'
-							type='password'
-							id='inputPassword5'
+							type='text'
+							id='fullname'
+							placeholder='Fullname'
 							className='bg-tertiary'
-							aria-describedby='passwordHelpBlock'
+							name='fullname'
+							value={isRegistered.fullname}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
-					<Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-						<Form.Label htmlFor='inputPassword5' className='fw-bold fs-4'>
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='username' className='fw-bold fs-4'>
+							Username
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='text'
+							id='username'
+							placeholder='Username'
+							className='bg-tertiary'
+							name='username'
+							value={isRegistered.username}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='email' className='fw-bold fs-4'>
+							Email
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='email'
+							id='email'
+							placeholder='Email'
+							className='bg-tertiary'
+							name='email'
+							value={isRegistered.email}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='password' className='fw-bold fs-4'>
 							Password
 						</Form.Label>
 						<Form.Control
 							size='lg'
 							type='password'
-							id='inputPassword5'
+							id='password'
+							placeholder='Password'
 							className='bg-tertiary'
-							aria-describedby='passwordHelpBlock'
+							name='password'
+							value={isRegistered.password}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='list' className='fw-bold fs-4'>
+							List As
+						</Form.Label>
+						<Form.Select
+							size='lg'
+							id='list'
+							name='list'
+							value={isRegistered.list}
+							className='bg-tertiary'
+							// defaultValue={ListAsData[0].value}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						>
+							{ListAsData.map((option, idk) => (
+								<option key={idk}>{option.value}</option>
+							))}
+						</Form.Select>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='gender' className='fw-bold fs-4'>
+							Gender
+						</Form.Label>
+						<Form.Select
+							size='lg'
+							id='gender'
+							name='gender'
+							value={isRegistered.gender}
+							className='bg-tertiary'
+							// defaultValue={GenderData[0].value}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						>
+							{GenderData.map((option, idk) => (
+								<option key={idk}>{option.value}</option>
+							))}
+						</Form.Select>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='phone' className='fw-bold fs-4'>
+							Phone
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='text'
+							id='phone'
+							placeholder='Phone'
+							className='bg-tertiary'
+							name='phone'
+							value={isRegistered.phone}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='address' className='fw-bold fs-4'>
+							Address
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							as='textarea'
+							rows='4'
+							id='address'
+							placeholder='Address'
+							name='address'
+							value={isRegistered.address}
+							className='bg-tertiary'
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
 					<Form.Group className='ms-auto mb-4'>
 						<Button
 							size='lg'
-							type='button'
+							type='submit'
 							className='mt-4 py-3 px-4 w-100'
-							// onClick={startFind}
+							onClick={props.onHide}
 						>
 							Apply
 						</Button>
 					</Form.Group>
 
 					<Form.Text id='passwordHelpBlock' muted>
-						Don't have an acount? Click{" "}
-						<span onClick={props.onHide} show={RegisterModal} to=''>
-							here
-						</span>
+						Don't have an acount? Click <span>here</span>
 					</Form.Text>
 				</Form>
 			</Modal.Body>
-			<Modal.Footer>
-				<Button onClick={props.onHide}>Close</Button>
-			</Modal.Footer>
 		</Modal>
 	);
 };

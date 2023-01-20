@@ -4,17 +4,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import LoginModal from "../auth/Login";
 import RegisterModal from "../auth/Register";
 
-import {
-	// Container,
-	Navbar,
-	Nav,
-	Button,
-	// NavDropdown,
-	InputGroup,
-	Form,
-	// Row,
-	// Col,
-} from "react-bootstrap";
+import { Navbar, Nav, Button, InputGroup, Form } from "react-bootstrap";
 import css from "./header.module.css";
 
 export default function Header(props) {
@@ -47,18 +37,26 @@ export default function Header(props) {
 						</Button>
 					</InputGroup>
 				</Form>
-				<Nav className='ms-auto px-4 d-flex gap-2'>
-					<Button size='lg' variant='light' onClick={() => setLoginModal(true)}>
-						Sign In
-					</Button>
-					<Button
-						size='lg'
-						variant='tertiary'
-						onClick={() => setRegisterModal(true)}
-					>
-						Sign Up
-					</Button>
-				</Nav>
+				{localStorage.getItem("isLogin") == null ? (
+					<Nav className='ms-auto px-4 d-flex gap-2'>
+						<Button
+							size='lg'
+							variant='light'
+							onClick={() => setLoginModal(true)}
+						>
+							Sign In
+						</Button>
+						<Button
+							size='lg'
+							variant='tertiary'
+							onClick={() => setRegisterModal(true)}
+						>
+							Sign Up
+						</Button>
+					</Nav>
+				) : (
+					<Nav className='ms-auto px-4 d-flex gap-2'>Something here</Nav>
+				)}
 			</Navbar.Collapse>
 
 			<LoginModal show={loginModal} onHide={() => setLoginModal(false)} />

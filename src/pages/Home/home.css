@@ -1,0 +1,26 @@
+body {
+  background-color: #ececec;
+}
+.MainContent {
+  padding-top: 5.5rem;
+  min-height: 100vh;
+  margin-left: auto;
+}
+@media (min-width: 1024px) {
+.MainContent {
+  margin-left:34rem;
+}
+}
+
+.SideItem {
+  z-index: 19;
+  width: 32rem;
+  height: 100vh;
+  padding: 8rem 3rem 3rem 3rem;
+  overflow: auto;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none; 
+}
+
+.SideItem::-webkit-scrollbar { width: 0 !important }

@@ -61,9 +61,9 @@ export default function Sidebar(props) {
 
 	return (
 		<>
-			<aside className={props.className} style={props.style}>
+			<aside className={props.className}>
 				<Form>
-					<Stack gap={4} className='mb-5'>
+					<Stack gap={4}>
 						<div className=''>
 							<h4 className='mb-3'>
 								<strong>Type of Rent</strong>

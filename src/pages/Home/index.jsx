@@ -5,7 +5,7 @@ import { DisplayedRoom } from "../../components/card/Store";
 // import css from "home.module.css";
 import Sidebar from "../../components/sidebar/Store";
 
-import css from "./home.module.css";
+import "./home.css";
 
 export default function Home() {
 	// const [data, setData] = useState({ Rooms });
@@ -89,18 +89,11 @@ export default function Home() {
 				<div>
 					<Sidebar
 						SearchRoom={updateFilters}
-						className='fixed-top z-1 bg-light'
-						style={{
-							width: "32rem",
-							height: "100vh",
-							padding: "8rem 3rem 0rem 3rem",
-							zIndex: "19",
-							overflow: "auto",
-						}}
+						className='fixed-top z-1 bg-light SideItem'
 					/>
 				</div>
 				<div>
-					<section className={css.MainContent}>
+					<section className={"MainContent"}>
 						<div className='p-lg-4'>
 							<div className='row row-cols-1 row-cols-xl-3'>
 								<DisplayedRoom

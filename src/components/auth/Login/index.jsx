@@ -6,13 +6,34 @@ const LoginModal = (props) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		let user = {
-			username: username,
-			password: password,
-		};
-		localStorage.setItem("user", JSON.stringify(user));
+	let isLogin = {
+		username: username,
+		password: password,
+	};
+	const LoginSubmit = (e) => {
+		// e.preventDefault();
+		const checkLogin = JSON.parse(localStorage.getItem("isRegistered"));
+
+		if (!isLogin.username) {
+			alert("Form Username perlu diisi!");
+		}
+		if (!isLogin.password) {
+			alert("Form Password perlu diisi!");
+		} else if (
+			checkLogin.password !== isLogin.password ||
+			checkLogin.fullname !== isLogin.username
+		) {
+			alert("Username atau Passwordmu tidak cocok");
+		} else if (
+			checkLogin.password === isLogin.password &&
+			checkLogin.fullname === isLogin.username
+		) {
+			alert("Berhasil Login");
+			props.onHide();
+			localStorage.setItem("isLogin", JSON.stringify(isLogin));
+		} else {
+			alert("Kamu Belum Registrasi!");
+		}
 	};
 
 	return (
@@ -22,14 +43,9 @@ const LoginModal = (props) => {
 			aria-labelledby='contained-modal-title-vcenter'
 			centered
 		>
-			{/* <Modal.Header closeButton> */}
-			{/* <Modal.Title id='contained-modal-title-vcenter' className=''>
-					<strong className='text-center'>Login</strong>
-				</Modal.Title> */}
-			{/* </Modal.Header> */}
 			<Modal.Body className='m-3'>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
-				<Form onSubmit={handleSubmit}>
+				<Form>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='username' className='fw-bold fs-4'>
 							Username
@@ -63,26 +79,19 @@ const LoginModal = (props) => {
 					<Form.Group className='ms-auto mb-4'>
 						<Button
 							size='lg'
-							type='submit'
+							type='button'
 							className='mt-4 py-3 px-4 w-100'
-							// onClick={startFind}
-							// onClick={user}
+							onClick={LoginSubmit}
 						>
 							Apply
 						</Button>
 					</Form.Group>
 
 					<Form.Text id='passwordHelpBlock' muted>
-						Don't have an acount? Click{" "}
-						<span closeButton onclick='call the new div here'>
-							here
-						</span>
+						Don't have an acount? Click <span>here</span>
 					</Form.Text>
 				</Form>
 			</Modal.Body>
-			{/* <Modal.Footer>
-				<Button onClick={props.onHide}>Close</Button>
-			</Modal.Footer> */}
 		</Modal>
 	);
 };
