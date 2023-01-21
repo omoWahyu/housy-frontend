@@ -21,7 +21,7 @@
   top: 0;
   z-index: 19;
   width: 32rem;
-  height: 100vh;
+  min-height: 100vh;
   padding: 8rem 3rem 3rem 3rem;
   overflow: auto;
   background-color: #f8f9fa;
@@ -40,5 +40,17 @@
 
 .RoomLink:hover {
   background-color: #ece8f1;
-color: black;
+  color: black;
+}
+
+.RoomsDisplay {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .RoomsDisplay {
+  width: 1240px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

@@ -49,7 +49,7 @@ export default function Home() {
 				<div>
 					<section className={css.MainWithSidebar}>
 						<div className='p-lg-4'>
-							<div className='row row-cols-1 row-cols-xxl-3'>
+							<div className={css.RoomsDisplay}>
 								<DisplayedRoom
 									Rooms={filterData(DataRooms)}
 									className={css.RoomLink}

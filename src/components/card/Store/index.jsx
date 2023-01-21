@@ -12,7 +12,7 @@ function DisplayedRoom(props) {
 					<Link
 						to={"/detail/" + k}
 						key={k}
-						className='col'
+						className='w-100'
 						style={{ textDecoration: "none" }}
 					>
 						<Card className={props.className}>
@@ -30,7 +30,7 @@ function DisplayedRoom(props) {
 							/>
 							<Card.Body>
 								<Card.Title>
-									<strong>{conqurency(room.cost)} / Year</strong>
+									<strong>{conqurency(room.cost)} / room.TOR</strong>
 								</Card.Title>
 								<Card.Subtitle className='mb-2'>
 									{room.bed} Beds, {room.bath} Bath, {room.size} Sqft
