@@ -85,7 +85,7 @@ const LoginModal = (props) => {
 							className='mt-4 py-3 px-4 w-100'
 							onClick={LoginSubmit}
 						>
-							Apply
+							Sign in
 						</Button>
 					</Form.Group>
 

@@ -253,7 +253,7 @@ const RegisterModal = (props) => {
 							className='mt-4 py-3 px-4 w-100'
 							onClick={RegistSubmit}
 						>
-							Apply
+							Sign up
 						</Button>
 					</Form.Group>
 				</Form>

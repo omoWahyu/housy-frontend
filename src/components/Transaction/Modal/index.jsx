@@ -6,7 +6,7 @@ function orderModal(props) {
 	return (
 		<Modal {...props} size='md' centered>
 			<Modal.Body className={css.Modal}>
-				<h2 className='text-center mt-3 mb-5 fw-bold'>
+				<h2 className='text-center mt-3 mb-3 fw-bold'>
 					How long you will stay
 				</h2>
 				<Form className={css.Form}>
@@ -19,7 +19,7 @@ function orderModal(props) {
 							size='lg'
 							type='text'
 							id='fullname'
-							placeholder='Fullname'
+							placeholder='Checkin'
 							className='bg-tertiary'
 							name='fullname'
 							// value={isRegistered.fullname}
@@ -34,11 +34,22 @@ function orderModal(props) {
 							size='lg'
 							type='text'
 							id='fullname'
-							placeholder='Fullname'
+							placeholder='Checkout'
 							className='bg-tertiary'
 							name='fullname'
 							// value={isRegistered.fullname}
 						/>
+					</Form.Group>
+
+					<Form.Group className='ms-auto mb-4'>
+						<Button
+							size='lg'
+							type='button'
+							className='mt-4 py-3 px-4 w-100'
+							// onClick={RegistSubmit}
+						>
+							Order
+						</Button>
 					</Form.Group>
 				</Form>
 			</Modal.Body>

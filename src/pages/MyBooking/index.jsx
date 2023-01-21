@@ -4,11 +4,13 @@ import { Image, Button } from "react-bootstrap";
 import Layout from "../../components/layouts/withoutSearchbar";
 import OrderModal from "../../components/Transaction/Modal";
 
+import { IoBed } from "react-icons/io5";
+import { GiBathtub } from "react-icons/gi";
 import css from "./myBooking.module.css";
 const MyBooking = () => {
 	const [orderModal, setLoginModal] = useState(false);
 	return (
-		<Layout className={"bg-tertiary"}>
+		<Layout className={"bg-white"}>
 			<div className=''>
 				<div className={css.MaxWidth}>
 					<div className='d-flex flex-column gap-3 w-100'>
@@ -40,31 +42,40 @@ const MyBooking = () => {
 							</div>
 						</div>
 					</div>
-					<div className='d-block'>
-						<h1>House Astina</h1>
-						<div className='d-flex'>
+					<div className={css.WrappingBookingDesc}>
+						<h1 className={css.BookingTitle}>House Astina</h1>
+						<div className={css.BookingDesc}>
 							<div>
-								<h3>Rp.9.000.000 / Year</h3>
-								<p>
+								<h3 className='fw-bold'>Rp.9.000.000 / Year</h3>
+								<p className='text-secondary' style={{ width: "360px" }}>
 									Jl. Elang IV Perum Permata Bintaro Residence, Pondok
 									Aren,Tangerang Selatan
 								</p>
 							</div>
-							<div>
-								<div className=''>
-									<span>Bedrooms</span> <b>3</b>
+							<div className=' d-flex gap-3'>
+								<div className='fw-semibold'>
+									<small className='text-secondary'>Bedrooms</small>
+									<span className='d-flex align-items-center gap-2 fs-4'>
+										3 <IoBed />
+									</span>
 								</div>
-								<div className=''>
-									<span>Bathrooms</span> <b>3</b>
+								<div className='fw-semibold'>
+									<small className='text-secondary'>Bathrooms</small>{" "}
+									<span className='d-flex align-items-center gap-2 fs-4'>
+										3 <GiBathtub />
+									</span>
 								</div>
-								<div className=''>
-									<span>Area</span> <b>1800 sqft</b>
+								<div className='fw-semibold'>
+									<small className='text-secondary'>Area</small>{" "}
+									<span className='d-flex align-items-center gap-2 fs-4'>
+										1800 sqft
+									</span>
 								</div>
 							</div>
 						</div>
 						<div className=''>
-							<h3>Description</h3>
-							<p>
+							<h3 className='fw-bold'>Description</h3>
+							<p className='text-secondary'>
 								Lorem Ipsum is simply dummy text of the printing and typesetting
 								industry. Lorem Ipsum has been the industry's standard dummy
 								text ever since the 1500s, when an unknown printer took a galley
@@ -77,9 +88,7 @@ const MyBooking = () => {
 								Lorem Ipsum.
 							</p>
 						</div>
-					</div>
-					<div className='w-100'>
-						<div className='ms-auto w-100'>
+						<div className='d-flex w-100 justify-content-end'>
 							<Button
 								size='lg'
 								variant='primary'

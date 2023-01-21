@@ -1,5 +1,7 @@
 .MaxWidth {
   padding-top: 5.75rem;
+  padding-left: 12px;
+  padding-right: 12px;
   margin-right: auto;
   margin-left: auto;
   max-width: 1440px;
@@ -7,7 +9,7 @@
 
 .WrapperPrimaryImage {
   margin-top: 20px;
-  height: 450px;
+  height: 475px;
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -43,4 +45,36 @@
   /* filter: blur(.5); */
   /* opacity: .5; */
   backdrop-filter: opacity(0.5);
+}
+
+.BookingTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.BookingDesc {
+  width: 100%;
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-between;
+}
+.WrappingBookingDesc {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width:"1440px") {
+  .BookingDesc {
+  flex-direction: column;
+  }
+
+  .WrappingBookingDesc {
+    flex-direction: row;
+    /* display: flex;
+    gap: 3; */
+  }
+  
 }
