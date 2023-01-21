@@ -4,16 +4,19 @@ import { Routes, Route } from "react-router-dom";
 // Page
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import MyBooking from "./pages/MyBooking";
+import Detail from "./pages/Detail";
 import History from "./pages/History";
 import PrivateRoute from "./lib/PrivateRoute"
 
+import DataRooms from "./data/rooms";
+
 function App() {
+
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/mybooking" element={<MyBooking />} />
+				<Route path="/detail/:id" element={<Detail room={DataRooms} />} />
 				<Route path="/" element={<PrivateRoute />} >
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/history" element={<History />} />

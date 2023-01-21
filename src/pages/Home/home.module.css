@@ -11,9 +11,9 @@
   margin-left: auto;
 }
 @media (min-width: 1024px) {
-.MainWithSidebar {
-  margin-left:34rem;
-}
+  .MainWithSidebar {
+    margin-left:34rem;
+  }
 }
 
 .SideItem {

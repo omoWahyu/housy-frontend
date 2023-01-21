@@ -7,18 +7,18 @@ function DisplayedRoom(props) {
 	console.log("data showed", props.Rooms);
 	return (
 		<>
-			{props.Rooms.map((room, idk) => {
+			{props.Rooms.map((room, k) => {
 				return (
 					<Link
-						to='/mybooking'
-						key={idk}
+						to={"/detail/" + k}
+						key={k}
 						className='col'
 						style={{ textDecoration: "none" }}
 					>
 						<Card className={props.className}>
 							<div className='position-absolute mt-3 ms-3 d-flex gap-2'>
-								{room.amenities.map((amenity, idk) => (
-									<span key={idk} className='px-3 py-1 bg-white rounded-2 fs-6'>
+								{room.amenities.map((amenity, k) => (
+									<span key={k} className='px-3 py-1 bg-white rounded-2 fs-6'>
 										{amenity}
 									</span>
 								))}

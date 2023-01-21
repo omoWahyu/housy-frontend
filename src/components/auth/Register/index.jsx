@@ -18,11 +18,8 @@ const RegisterModal = (props) => {
 	// 	address: "",
 	// 	image: "",
 	// },
-	const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
+	// const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
 
-	if (!checkAccount) {
-		localStorage.setItem("userData", JSON.stringify(isRegistered));
-	}
 	const RegistSubmit = (e) => {
 		e.preventDefault();
 		// if (!isRegistered.fullname) {

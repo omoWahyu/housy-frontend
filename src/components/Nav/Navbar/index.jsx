@@ -9,9 +9,9 @@ import { IoLogOut } from "react-icons/io5";
 import { Image } from "react-bootstrap";
 
 // Components
-import LoginModal from "../auth/Login";
-import logo from "../../assets/icons/Logo.svg";
-import RegisterModal from "../auth/Register";
+import LoginModal from "../../auth/Login";
+import logo from "../../../assets/icons/Logo.svg";
+import RegisterModal from "../../auth/Register";
 
 import {
 	Navbar,

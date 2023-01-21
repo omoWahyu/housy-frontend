@@ -5,12 +5,11 @@ import { Button, Modal, Form } from "react-bootstrap";
 const LoginModal = (props) => {
 	const [isLogin, setIsLogin] = useState({
 		username: "",
-		// password: "",
+		password: "",
 	});
 
 	const LoginSubmit = (e) => {
 		// e.preventDefault();
-		// const checkLogin = JSON.parse(localStorage.getItem("userData")) || [];
 		const checkLogin = JSON.parse(localStorage.getItem("userData")) || [];
 
 		if (!isLogin.username) {
@@ -21,13 +20,13 @@ const LoginModal = (props) => {
 		} else if (
 			checkLogin.find((userData) => userData.username === isLogin.username)
 		) {
-			alert("Username or Password is invalid");
-		} else if (!checkLogin) {
-			alert("Your Account is not Registered!");
-		} else {
 			alert("Berhasil Login");
 			props.onHide();
 			localStorage.setItem("isLogin", JSON.stringify(isLogin));
+		} else if (!checkLogin) {
+			alert("Your Account is not Registered!");
+		} else {
+			alert("Username or Password is invalid");
 		}
 	};
 

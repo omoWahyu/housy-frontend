@@ -55,7 +55,7 @@
 .BookingDesc {
   width: 100%;
   display: flex;
-  flex-direction: row ;
+  flex-direction: column ;
   justify-content: space-between;
 }
 .WrappingBookingDesc {
@@ -66,15 +66,10 @@
   gap: 32px;
 }
 
-@media (min-width:"1440px") {
+@media (min-width:1440px) {
   .BookingDesc {
-  flex-direction: column;
+  flex-direction: row;
   }
 
-  .WrappingBookingDesc {
-    flex-direction: row;
-    /* display: flex;
-    gap: 3; */
-  }
   
 }

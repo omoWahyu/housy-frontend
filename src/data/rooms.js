@@ -9,6 +9,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished", "Pet Allowed"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "3",
 		"bath": "3"
@@ -23,6 +24,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "1",
 		"bath": "1"
@@ -37,6 +39,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "2",
 		"bath": "1"
@@ -51,6 +54,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "4",
 		"bath": "3"
@@ -65,6 +69,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "1",
 		"bath": "1"
@@ -79,6 +84,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "2",
 		"bath": "2"
@@ -93,6 +99,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "3",
 		"bath": "2"
@@ -107,6 +114,7 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
 		"size": "1800",
 		"bed": "3",
 		"bath": "2"
@@ -121,6 +129,22 @@ const Rooms = [
 		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 		"amenities": ["Furnished"],
 		"cost": 9000000,
+		"TOR": "Year",
+		"size": "1800",
+		"bed": "3",
+		"bath": "2"
+	},
+	{
+		"id": 10,
+		"name": "House Astina",
+		"imageUrl": "image1.png",
+		"streetAddress": "Jl. Elang IV Perum Permata Bintaro Residence",
+		"districtAddress": "Pondok Aren",
+		"townAddress": "Tangerang Selatan",
+		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"amenities": ["Furnished"],
+		"cost": 130000,
+		"TOR": "Day",
 		"size": "1800",
 		"bed": "3",
 		"bath": "2"
