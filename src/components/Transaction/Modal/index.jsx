@@ -1,8 +1,12 @@
+import React, { useState } from "react";
+import moment from "moment";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import css from "./modal.module.css";
 
-function orderModal(props) {
+const OrderModal = (props) => {
+	const [checkIn, setCheckIn] = useState(moment());
+	const [checkOut, setCheckOut] = useState(moment());
 	return (
 		<Modal {...props} size='md' centered>
 			<Modal.Body className={css.Modal}>
@@ -17,12 +21,14 @@ function orderModal(props) {
 						<Form.Control
 							autoFocus
 							size='lg'
-							type='text'
+							type='date'
 							id='fullname'
 							placeholder='Checkin'
 							className='bg-tertiary'
 							name='fullname'
 							// value={isRegistered.fullname}
+							onChange={(e) => setCheckIn(moment(e.target.value))}
+							value={checkIn.format("DD-MM-YYYY")}
 						/>
 					</Form.Group>
 					<Form.Group className='mb-3'>
@@ -32,12 +38,14 @@ function orderModal(props) {
 						<Form.Control
 							autoFocus
 							size='lg'
-							type='text'
+							type='date'
 							id='fullname'
 							placeholder='Checkout'
 							className='bg-tertiary'
 							name='fullname'
 							// value={isRegistered.fullname}
+							onChange={(e) => setCheckOut(moment(e.target.value))}
+							value={checkOut.format("DD-MM-YYYY")}
 						/>
 					</Form.Group>
 
@@ -55,6 +63,6 @@ function orderModal(props) {
 			</Modal.Body>
 		</Modal>
 	);
-}
+};
 
-export default orderModal;
+export default OrderModal;

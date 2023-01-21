@@ -3,13 +3,11 @@ import { Button, Modal, Form } from "react-bootstrap";
 // import RegisterModal from "../Register";
 
 const LoginModal = (props) => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const [isLogin, setIsLogin] = useState({
+		username: "",
+		password: "",
+	});
 
-	let isLogin = {
-		username: username,
-		password: password,
-	};
 	const LoginSubmit = (e) => {
 		// e.preventDefault();
 		const checkLogin = JSON.parse(localStorage.getItem("isRegistered"));
@@ -58,8 +56,14 @@ const LoginModal = (props) => {
 							id='username'
 							placeholder='Username'
 							className='bg-tertiary'
-							aria-describedby='passwordHelpBlock'
-							onChange={(e) => setUsername(e.target.value)}
+							name='username'
+							value={isLogin.username}
+							onChange={(e) =>
+								setIsLogin({
+									...isLogin,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -73,8 +77,14 @@ const LoginModal = (props) => {
 							id='Password'
 							placeholder='Password'
 							className='bg-tertiary'
-							aria-describedby='passwordHelpBlock'
-							onChange={(e) => setPassword(e.target.value)}
+							name='password'
+							value={isLogin.password}
+							onChange={(e) =>
+								setIsLogin({
+									...isLogin,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 

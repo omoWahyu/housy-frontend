@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import logo from "../../assets/icons/Logo.svg";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FaRegUser, FaRegCalendar } from "react-icons/fa";
 import { TbHistory } from "react-icons/tb";
 import { IoLogOut } from "react-icons/io5";
+
+import { Image } from "react-bootstrap";
+
+// Components
 import LoginModal from "../auth/Login";
+import logo from "../../assets/icons/Logo.svg";
 import RegisterModal from "../auth/Register";
 
 import {
@@ -34,7 +38,7 @@ export default function Header(props) {
 	const isLogout = () => {
 		localStorage.removeItem("isLogin");
 		alert("Logout Success, Bye👋");
-		redirect.push("/");
+		redirect("/");
 	};
 	return (
 		<Navbar style={props.style} expand='xxl' className={props.className}>
@@ -89,8 +93,11 @@ export default function Header(props) {
 							</>
 						) : (
 							<Dropdown>
-								<Dropdown.Toggle variant='success' id='dropdown-basic'>
-									Dropdown Button
+								<Dropdown.Toggle className={css.Toggle}>
+									<Image
+										className={css.ToggleImage}
+										src={"https://github.com/hyujisf.png"}
+									/>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu align='end' className={css.DropdownMenu}>

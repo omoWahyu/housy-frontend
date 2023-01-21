@@ -34,7 +34,7 @@ const MyBooking = () => {
 								/>
 							</div>
 							<div className={css.WrapperSubImage}>
-								<span className={css.ImageMore}>test</span>
+								<span className={css.ImageMore}>+5</span>
 								<Image
 									src={process.env.PUBLIC_URL + "/img/rooms/image6.png"}
 									className={css.PrimaryImage}

@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font: 700;
+  font-weight: 700;
   font-size: 24px;
   background-color: rgba(133, 133, 133, 0.5);
   /* filter: blur(.5); */
