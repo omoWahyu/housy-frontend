@@ -4,69 +4,53 @@ import { Button, Modal, Form } from "react-bootstrap";
 import css from "./Register.module.css";
 
 const RegisterModal = (props) => {
-	const [isRegistered, setIsRegistered] = useState([]);
+	const [isRegistered, setIsRegistered] = useState([
+		{
+			fullname: "",
+			username: "",
+			email: "",
+			password: "",
+			list: "",
+			gender: "",
+			phone: "",
+			address: "",
+			image: "",
+		},
+	]);
 	// Custom?
 
-	// {
-	// 	fullname: "",
-	// 	username: "",
-	// 	email: "",
-	// 	password: "",
-	// 	list: "",
-	// 	gender: "",
-	// 	phone: "",
-	// 	address: "",
-	// 	image: "",
-	// },
-	const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
+	// const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
 
-	if (!checkAccount) {
-		localStorage.setItem("userData", JSON.stringify(isRegistered));
-	}
 	const RegistSubmit = (e) => {
-		e.preventDefault();
-		// if (!isRegistered.fullname) {
-		// 	alert("Form Fullname is required!");
-		// }
-		// if (!isRegistered.username) {
-		// 	alert("Form Username is required!");
-		// }
-		// if (!isRegistered.email) {
-		// 	alert("Form Email is required!");
-		// }
-		// if (!isRegistered.password) {
-		// 	alert("Form Password is required!");
-		// }
-		// if (!isRegistered.list) {
-		// 	alert("Form List As is required!");
-		// }
-		// if (!isRegistered.gender) {
-		// 	alert("Form Gender At is required!");
-		// }
-		// if (!isRegistered.phone) {
-		// 	alert("Form Phone At is required!");
-		// }
-		// if (!isRegistered.address) {
-		// 	alert("Form Address At is required!");
-		// }
+		if (!isRegistered.fullname) {
+			alert("Form Fullname is required!");
+		}
+		if (!isRegistered.username) {
+			alert("Form Username is required!");
+		}
+		if (!isRegistered.email) {
+			alert("Form Email is required!");
+		}
+		if (!isRegistered.password) {
+			alert("Form Password is required!");
+		}
+		if (!isRegistered.list) {
+			alert("Form List As is required!");
+		}
+		if (!isRegistered.gender) {
+			alert("Form Gender At is required!");
+		}
+		if (!isRegistered.phone) {
+			alert("Form Phone At is required!");
+		}
+		if (!isRegistered.address) {
+			alert("Form Address At is required!");
+		}
 		// if (!checkAccount) {
-		const registingUser = {
-			fullname: e.target.elements.fullname.value,
-			username: e.target.elements.username.value,
-			email: e.target.elements.email.value,
-			password: e.target.elements.password.value,
-			list: e.target.elements.list.value,
-			gender: e.target.elements.gender.value,
-			phone: e.target.elements.phone.value,
-			address: e.target.elements.address.value,
-			image: "",
-		};
-
-		setIsRegistered([...isRegistered, registingUser]);
-		localStorage.setItem("userData", JSON.stringify(isRegistered));
+		props.onHide();
+		localStorage.setItem("isRegistered", JSON.stringify(isRegistered));
 		alert("Registration successful!");
-		// props.onHide();
-		// props.gotologin();
+		props.gotologin();
 		// } else {
 		// 	alert("This Account is Already Registered");
 		// }
@@ -82,7 +66,7 @@ const RegisterModal = (props) => {
 		>
 			<Modal.Body className={css.Modal}>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign up</h1>
-				<Form className={css.Form} onSubmit={RegistSubmit}>
+				<Form className={css.Form}>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='fullname' className='fw-bold fs-4'>
 							Full Name
@@ -95,13 +79,13 @@ const RegisterModal = (props) => {
 							placeholder='Fullname'
 							className='bg-tertiary'
 							name='fullname'
-							// value={isRegistered.fullname}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							value={isRegistered.fullname}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -116,13 +100,13 @@ const RegisterModal = (props) => {
 							placeholder='Username'
 							className='bg-tertiary'
 							name='username'
-							// value={isRegistered.username}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							value={isRegistered.username}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -137,13 +121,13 @@ const RegisterModal = (props) => {
 							placeholder='Email'
 							className='bg-tertiary'
 							name='email'
-							// value={isRegistered.email}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							value={isRegistered.email}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -158,13 +142,13 @@ const RegisterModal = (props) => {
 							placeholder='Password'
 							className='bg-tertiary'
 							name='password'
-							// value={isRegistered.password}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							value={isRegistered.password}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -176,15 +160,15 @@ const RegisterModal = (props) => {
 							size='lg'
 							id='list'
 							name='list'
-							// value={isRegistered.list}
+							value={isRegistered.list}
 							className='bg-tertiary'
 							// defaultValue={ListAsData[0].value}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						>
 							<option>--Choose--</option>
 							{ListAsData.map((option, idk) => (
@@ -203,15 +187,15 @@ const RegisterModal = (props) => {
 							size='lg'
 							id='gender'
 							name='gender'
-							// value={isRegistered.gender}
+							value={isRegistered.gender}
 							className='bg-tertiary'
-							// // defaultValue={GenderData[0].value}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							// defaultValue={GenderData[0].value}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						>
 							<option>--Choose--</option>
 							{GenderData.map((option, idk) => (
@@ -233,13 +217,13 @@ const RegisterModal = (props) => {
 							placeholder='Phone'
 							className='bg-tertiary'
 							name='phone'
-							// value={isRegistered.phone}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							value={isRegistered.phone}
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
@@ -254,23 +238,23 @@ const RegisterModal = (props) => {
 							id='address'
 							placeholder='Address'
 							name='address'
-							// value={isRegistered.address}
+							value={isRegistered.address}
 							className='bg-tertiary'
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
+							onChange={(e) =>
+								setIsRegistered({
+									...isRegistered,
+									[e.target.name]: e.target.value,
+								})
+							}
 						/>
 					</Form.Group>
 
 					<Form.Group className='ms-auto mb-4'>
 						<Button
 							size='lg'
-							type='submit'
+							type='button'
 							className='mt-4 py-3 px-4 w-100'
-							// onClick={RegistSubmit}
+							onClick={RegistSubmit}
 						>
 							Sign up
 						</Button>

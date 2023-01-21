@@ -28,7 +28,7 @@ const OrderModal = (props) => {
 							name='fullname'
 							// value={isRegistered.fullname}
 							onChange={(e) => setCheckIn(moment(e.target.value))}
-							value={checkIn.format("DD-MM-YYYY")}
+							value={checkIn.format("YYYY-MM-DD")}
 						/>
 					</Form.Group>
 					<Form.Group className='mb-3'>
@@ -45,7 +45,7 @@ const OrderModal = (props) => {
 							name='fullname'
 							// value={isRegistered.fullname}
 							onChange={(e) => setCheckOut(moment(e.target.value))}
-							value={checkOut.format("DD-MM-YYYY")}
+							value={checkOut.format("YYYY-MM-DD")}
 						/>
 					</Form.Group>
 
