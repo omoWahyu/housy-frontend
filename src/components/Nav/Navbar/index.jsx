@@ -29,12 +29,12 @@ export default function Header(props) {
 
 	const redirect = useNavigate();
 
-	const gotoLogin = () => {
-		setLoginModal(true);
-	};
-	const gotoRegistration = () => {
-		setRegisterModal(true);
-	};
+	// const gotoLogin = () => {
+	// 	setLoginModal(true);
+	// };
+	// const gotoRegistration = () => {
+	// 	setRegisterModal(true);
+	// };
 	const isLogout = () => {
 		localStorage.removeItem("isLogin");
 		alert("Logout Success, Bye👋");
@@ -150,12 +150,12 @@ export default function Header(props) {
 
 				<LoginModal
 					show={loginModal}
-					gotoregister={gotoRegistration}
+					toRegister={() => setRegisterModal(true)}
 					onHide={() => setLoginModal(false)}
 				/>
 				<RegisterModal
 					show={registerModal}
-					gotologin={gotoLogin}
+					toLogin={() => setLoginModal(true)}
 					onHide={() => setRegisterModal(false)}
 				/>
 				{/* </Container> */}

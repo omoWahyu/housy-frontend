@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
 import css from "./Register.module.css";
@@ -6,60 +6,58 @@ import css from "./Register.module.css";
 const RegisterModal = (props) => {
 	// const [isRegistered, setIsRegistered] = useState([]);
 
-	// const dataExist = JSON.parse(localStorage.getItem("userData"));
+	const checkData = JSON.parse(localStorage.getItem("userData"));
 
 	const RegistSubmit = (e) => {
 		e.preventDefault();
 
-		if (!e.target.elements.fullname.value) {
+		if (!e.target.fullname.value) {
 			alert("Form Fullname is required!");
 		}
-		if (!e.target.elements.username.value) {
+		if (!e.target.username.value) {
 			alert("Form Username is required!");
 		} else {
 			const registingUser = {
-				fullname: e.target.elements.fullname.value,
-				username: e.target.elements.username.value,
-				email: e.target.elements.email.value,
-				password: e.target.elements.password.value,
-				role: e.target.elements.list.value,
-				gender: e.target.elements.gender.value,
-				phone: e.target.elements.phone.value,
-				address: e.target.elements.address.value,
+				fullname: e.target.fullname.value,
+				username: e.target.username.value,
+				email: e.target.email.value,
+				password: e.target.password.value,
+				role: e.target.list.value,
+				gender: e.target.gender.value,
+				phone: e.target.phone.value,
+				address: e.target.address.value,
 				image: "",
 			};
 			console.log("Registing User", registingUser);
-			const currentRegistered = JSON.parse(localStorage.getItem("userData"));
-			console.log("current coy", currentRegistered);
-			// setIsRegistered([...isRegistered, registingUser]);
+			console.log("current Registered Data", checkData);
 			if (localStorage.getItem("userData")) {
 				localStorage.setItem(
 					"userData",
-					JSON.stringify([...currentRegistered, registingUser])
+					JSON.stringify([...checkData, registingUser])
 				);
 			} else {
 				localStorage.setItem("userData", JSON.stringify([registingUser]));
 			}
 			alert("Registration successful!");
 			props.onHide();
-			props.gotologin();
+			props.toLogin();
 		}
-		if (!e.target.elements.email.value) {
+		if (!e.target.email.value) {
 			alert("Form Email is required!");
 		}
-		if (!e.target.elements.password.value) {
+		if (!e.target.password.value) {
 			alert("Form Password is required!");
 		}
-		if (!e.target.elements.list.value) {
+		if (!e.target.list.value) {
 			alert("Form List As is required!");
 		}
-		if (!e.target.elements.gender.value) {
+		if (!e.target.gender.value) {
 			alert("Form Gender At is required!");
 		}
-		if (!e.target.elements.phone.value) {
+		if (!e.target.phone.value) {
 			alert("Form Phone At is required!");
 		}
-		if (!e.target.elements.address.value) {
+		if (!e.target.address.value) {
 			alert("Form Address At is required!");
 		}
 	};

@@ -3,26 +3,27 @@ import { Button, Modal, Form } from "react-bootstrap";
 // import RegisterModal from "../Register";
 
 const LoginModal = (props) => {
-	const [isLogin, setIsLogin] = useState({
-		username: "",
-		password: "",
-	});
+	const [isLogin, setIsLogin] = useState({});
 
 	const LoginSubmit = (e) => {
-		// e.preventDefault();
+		e.preventDefault();
+		const loginUser = {
+			username: e.target.username.value,
+			password: e.target.password.value,
+		};
 		const checkLogin = JSON.parse(localStorage.getItem("userData")) || [];
 
-		if (!isLogin.username) {
+		if (!loginUser.username) {
 			alert("Form Username is required!");
 		}
-		if (!isLogin.password) {
+		if (!loginUser.password) {
 			alert("Form Password is required!");
 		} else if (
-			checkLogin.find((userData) => userData.username === isLogin.username)
+			checkLogin.find((userData) => userData.username === loginUser.username)
 		) {
 			alert("Berhasil Login");
 			props.onHide();
-			localStorage.setItem("isLogin", JSON.stringify(isLogin));
+			localStorage.setItem("isLogin", JSON.stringify(loginUser));
 		} else if (!checkLogin) {
 			alert("Your Account is not Registered!");
 		} else {
@@ -32,7 +33,7 @@ const LoginModal = (props) => {
 
 	const goRegister = () => {
 		props.onHide();
-		props.gotoregister();
+		props.toRegister();
 	};
 
 	return (
@@ -44,7 +45,7 @@ const LoginModal = (props) => {
 		>
 			<Modal.Body className='m-3'>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
-				<Form>
+				<Form onSubmit={LoginSubmit}>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='username' className='fw-bold fs-4'>
 							Username
@@ -56,13 +57,6 @@ const LoginModal = (props) => {
 							placeholder='Username'
 							className='bg-tertiary'
 							name='username'
-							value={isLogin.username}
-							onChange={(e) =>
-								setIsLogin({
-									...isLogin,
-									[e.target.name]: e.target.value,
-								})
-							}
 						/>
 					</Form.Group>
 
@@ -77,23 +71,11 @@ const LoginModal = (props) => {
 							placeholder='Password'
 							className='bg-tertiary'
 							name='password'
-							value={isLogin.password}
-							onChange={(e) =>
-								setIsLogin({
-									...isLogin,
-									[e.target.name]: e.target.value,
-								})
-							}
 						/>
 					</Form.Group>
 
 					<Form.Group className='ms-auto mb-4'>
-						<Button
-							size='lg'
-							type='button'
-							className='mt-4 py-3 px-4 w-100'
-							onClick={LoginSubmit}
-						>
+						<Button size='lg' type='submit' className='mt-4 py-3 px-4 w-100'>
 							Sign in
 						</Button>
 					</Form.Group>

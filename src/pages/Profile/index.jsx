@@ -62,7 +62,7 @@ const Profile = () => {
 									<MdPersonPinCircle fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											Wahyudi Chrisdianto
+											{user.role}
 										</strong>
 										<small>Status</small>
 									</div>
@@ -71,27 +71,27 @@ const Profile = () => {
 									<TbGenderBigender fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											Wahyudi Chrisdianto
+											{user.gender}
 										</strong>
-										<small>Full name</small>
+										<small>Gender</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLocalPhone fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											Wahyudi Chrisdianto
+											{user.phone}
 										</strong>
-										<small>Full name</small>
+										<small>Mobile Phone</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLocationPin fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											Wahyudi Chrisdianto
+											{user.address}
 										</strong>
-										<small>Full name</small>
+										<small>Address</small>
 									</div>
 								</div>
 							</div>
