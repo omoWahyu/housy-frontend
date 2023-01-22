@@ -4,69 +4,64 @@ import { Button, Modal, Form } from "react-bootstrap";
 import css from "./Register.module.css";
 
 const RegisterModal = (props) => {
-	const [isRegistered, setIsRegistered] = useState([]);
-	// Custom?
+	// const [isRegistered, setIsRegistered] = useState([]);
 
-	// {
-	// 	fullname: "",
-	// 	username: "",
-	// 	email: "",
-	// 	password: "",
-	// 	list: "",
-	// 	gender: "",
-	// 	phone: "",
-	// 	address: "",
-	// 	image: "",
-	// },
-	// const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
+	// const dataExist = JSON.parse(localStorage.getItem("userData"));
 
 	const RegistSubmit = (e) => {
 		e.preventDefault();
-		// if (!isRegistered.fullname) {
-		// 	alert("Form Fullname is required!");
-		// }
-		// if (!isRegistered.username) {
-		// 	alert("Form Username is required!");
-		// }
-		// if (!isRegistered.email) {
-		// 	alert("Form Email is required!");
-		// }
-		// if (!isRegistered.password) {
-		// 	alert("Form Password is required!");
-		// }
-		// if (!isRegistered.list) {
-		// 	alert("Form List As is required!");
-		// }
-		// if (!isRegistered.gender) {
-		// 	alert("Form Gender At is required!");
-		// }
-		// if (!isRegistered.phone) {
-		// 	alert("Form Phone At is required!");
-		// }
-		// if (!isRegistered.address) {
-		// 	alert("Form Address At is required!");
-		// }
-		// if (!checkAccount) {
-		const registingUser = {
-			fullname: e.target.elements.fullname.value,
-			username: e.target.elements.username.value,
-			email: e.target.elements.email.value,
-			password: e.target.elements.password.value,
-			list: e.target.elements.list.value,
-			gender: e.target.elements.gender.value,
-			phone: e.target.elements.phone.value,
-			address: e.target.elements.address.value,
-			image: "",
-		};
 
-		setIsRegistered([...isRegistered, registingUser]);
-		localStorage.setItem("userData", JSON.stringify(isRegistered));
-		alert("Registration successful!");
-		// props.onHide();
-		// props.gotologin();
-		// } else {
-		// 	alert("This Account is Already Registered");
-		// }
+		if (!e.target.elements.fullname.value) {
+			alert("Form Fullname is required!");
+		}
+		if (!e.target.elements.username.value) {
+			alert("Form Username is required!");
+		} else {
+			const registingUser = {
+				fullname: e.target.elements.fullname.value,
+				username: e.target.elements.username.value,
+				email: e.target.elements.email.value,
+				password: e.target.elements.password.value,
+				role: e.target.elements.list.value,
+				gender: e.target.elements.gender.value,
+				phone: e.target.elements.phone.value,
+				address: e.target.elements.address.value,
+				image: "",
+			};
+			console.log("Registing User", registingUser);
+			const currentRegistered = JSON.parse(localStorage.getItem("userData"));
+			console.log("current coy", currentRegistered);
+			// setIsRegistered([...isRegistered, registingUser]);
+			if (localStorage.getItem("userData")) {
+				localStorage.setItem(
+					"userData",
+					JSON.stringify([...currentRegistered, registingUser])
+				);
+			} else {
+				localStorage.setItem("userData", JSON.stringify([registingUser]));
+			}
+			alert("Registration successful!");
+			props.onHide();
+			props.gotologin();
+		}
+		if (!e.target.elements.email.value) {
+			alert("Form Email is required!");
+		}
+		if (!e.target.elements.password.value) {
+			alert("Form Password is required!");
+		}
+		if (!e.target.elements.list.value) {
+			alert("Form List As is required!");
+		}
+		if (!e.target.elements.gender.value) {
+			alert("Form Gender At is required!");
+		}
+		if (!e.target.elements.phone.value) {
+			alert("Form Phone At is required!");
+		}
+		if (!e.target.elements.address.value) {
+			alert("Form Address At is required!");
+		}
 	};
 	const ListAsData = [{ value: "Tenant" }, { value: "Admin" }];
 	const GenderData = [{ value: "Laki-laki" }, { value: "Perempuan" }];
@@ -92,13 +87,6 @@ const RegisterModal = (props) => {
 							placeholder='Fullname'
 							className='bg-tertiary'
 							name='fullname'
-							// value={isRegistered.fullname}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 
@@ -113,13 +101,6 @@ const RegisterModal = (props) => {
 							placeholder='Username'
 							className='bg-tertiary'
 							name='username'
-							// value={isRegistered.username}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 
@@ -134,13 +115,6 @@ const RegisterModal = (props) => {
 							placeholder='Email'
 							className='bg-tertiary'
 							name='email'
-							// value={isRegistered.email}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 
@@ -155,13 +129,6 @@ const RegisterModal = (props) => {
 							placeholder='Password'
 							className='bg-tertiary'
 							name='password'
-							// value={isRegistered.password}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 
@@ -173,15 +140,7 @@ const RegisterModal = (props) => {
 							size='lg'
 							id='list'
 							name='list'
-							// value={isRegistered.list}
 							className='bg-tertiary'
-							// defaultValue={ListAsData[0].value}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						>
 							<option>--Choose--</option>
 							{ListAsData.map((option, idk) => (
@@ -200,15 +159,7 @@ const RegisterModal = (props) => {
 							size='lg'
 							id='gender'
 							name='gender'
-							// value={isRegistered.gender}
 							className='bg-tertiary'
-							// // defaultValue={GenderData[0].value}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						>
 							<option>--Choose--</option>
 							{GenderData.map((option, idk) => (
@@ -230,13 +181,6 @@ const RegisterModal = (props) => {
 							placeholder='Phone'
 							className='bg-tertiary'
 							name='phone'
-							// value={isRegistered.phone}
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 
@@ -253,12 +197,6 @@ const RegisterModal = (props) => {
 							name='address'
 							// value={isRegistered.address}
 							className='bg-tertiary'
-							// onChange={(e) =>
-							// 	setIsRegistered({
-							// 		...isRegistered,
-							// 		[e.target.name]: e.target.value,
-							// 	})
-							// }
 						/>
 					</Form.Group>
 

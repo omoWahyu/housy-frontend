@@ -19,6 +19,12 @@ const RegisterModal = (props) => {
 	]);
 	// Custom?
 
+			if (dataExist.filter((obj) => obj.username !== registingUser.username)) {
+			} else {
+				alert(
+					"This Account is Already Registered, please login or regist another account instead!"
+				);
+			}
 	// const checkAccount = JSON.parse(localStorage.getItem("isRegistered"));
 
 	const RegistSubmit = (e) => {

@@ -15,18 +15,11 @@ import { TbGenderBigender } from "react-icons/tb";
 
 import Layout from "../../components/layouts/withSearchbar";
 const Profile = () => {
-	// const [userData, setUserData] = useState(
-	// 	JSON.parse(localStorage.getItem("userData")) || []
-	// );
-
-	// const isLogin = JSON.parse(localStorage.getItem("isLogin"));
-	// // const checkData = JSON.parse(localStorage.getItem("userData")) || [];
-
-	// setUserData(isLogin.username);
-	// userData.filter((user) => user.username === isLogin.username);
-
-	// const users = checkData.filter((user) => user.username === isLogin.username);
-	// users.map((user) => ({ email: user.email, name: user.fullname }));
+	const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+	const user = JSON.parse(localStorage.getItem("userData")).find(
+		(obj) => obj.username === isLogin.username
+	);
+	// console.log("user data", user);
 
 	return (
 		<Layout className='bg-tertiary'>
@@ -42,7 +35,7 @@ const Profile = () => {
 									<HiUserCircle fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											{/* {user.fullname} */}
+											{user.fullname}
 										</strong>
 										<small>Full name</small>
 									</div>
@@ -50,17 +43,19 @@ const Profile = () => {
 								<div className='d-flex gap-3 align-items-center'>
 									<HiMail fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'></strong>
-										<small>Full name</small>
+										<strong className='d-block text-black m-0'>
+											{user.email}
+										</strong>
+										<small>Email</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLock fontSize={36} />
 									<div className=''>
 										<strong className='d-block text-black m-0'>
-											Wahyudi Chrisdianto
+											Change Password
 										</strong>
-										<small>Full name</small>
+										<small>Password</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
@@ -69,7 +64,7 @@ const Profile = () => {
 										<strong className='d-block text-black m-0'>
 											Wahyudi Chrisdianto
 										</strong>
-										<small>Full name</small>
+										<small>Status</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
