@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Image, Button } from "react-bootstrap";
 
 import Layout from "../../components/layouts/withoutSearchbar";
-import OrderModal from "../../components/Transaction/Modal";
+import OrderModal from "../../components/Common/DetailModal";
 
 import { IoBed } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";

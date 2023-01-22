@@ -13,8 +13,11 @@ import {
 } from "react-icons/md";
 import { TbGenderBigender } from "react-icons/tb";
 
+import PassModal from "../../components/Common/ChangePasswordmodal";
+
 import Layout from "../../components/layouts/withSearchbar";
 const Profile = () => {
+	const [PasswordModal, setPasswordModal] = useState(false);
 	const isLogin = JSON.parse(localStorage.getItem("isLogin"));
 	const user = JSON.parse(localStorage.getItem("userData")).find(
 		(obj) => obj.username === isLogin.username
@@ -34,25 +37,24 @@ const Profile = () => {
 								<div className='d-flex gap-3 align-items-center'>
 									<HiUserCircle fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.fullname}
-										</strong>
+										<strong className={css.ListTitle}>{user.fullname}</strong>
 										<small>Full name</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<HiMail fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.email}
-										</strong>
+										<strong className={css.ListTitle}>{user.email}</strong>
 										<small>Email</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLock fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
+										<strong
+											className={css.ListTitleTrigger}
+											onClick={() => setPasswordModal(true)}
+										>
 											Change Password
 										</strong>
 										<small>Password</small>
@@ -61,36 +63,28 @@ const Profile = () => {
 								<div className='d-flex gap-3 align-items-center'>
 									<MdPersonPinCircle fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.role}
-										</strong>
+										<strong className={css.ListTitle}>{user.role}</strong>
 										<small>Status</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<TbGenderBigender fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.gender}
-										</strong>
+										<strong className={css.ListTitle}>{user.gender}</strong>
 										<small>Gender</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLocalPhone fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.phone}
-										</strong>
+										<strong className={css.ListTitle}>{user.phone}</strong>
 										<small>Mobile Phone</small>
 									</div>
 								</div>
 								<div className='d-flex gap-3 align-items-center'>
 									<MdLocationPin fontSize={36} />
 									<div className=''>
-										<strong className='d-block text-black m-0'>
-											{user.address}
-										</strong>
+										<strong className={css.ListTitle}>{user.address}</strong>
 										<small>Address</small>
 									</div>
 								</div>
@@ -111,6 +105,12 @@ const Profile = () => {
 					</div>
 				</div>
 			</div>
+
+			<PassModal
+				show={PasswordModal}
+				// gotoregister={gotoRegistration}
+				onHide={() => setPasswordModal(false)}
+			/>
 		</Layout>
 	);
 };

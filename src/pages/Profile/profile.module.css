@@ -13,6 +13,7 @@
   border-radius: 1rem;
   background-color: white;
   padding: 3rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .CardLeft {
@@ -42,4 +43,22 @@ overflow: hidden;
   object-fit: cover;
   object-position: center;
 
+}
+
+.ListTitle {
+  display: block;
+  color: black;
+  margin: 0;
+}
+.ListTitleTrigger {
+  display: block;
+  color: #570ece;
+  margin: 0;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.ListTitleTrigger:hover {
+  display: block;
+  color: #b80ece;
+  margin: 0;
 }
