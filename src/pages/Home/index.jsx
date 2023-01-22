@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import LayoutStore from "../../components/layouts/Store";
+import LayoutStore from "../../components/layouts/withSearchbar";
 import DataRooms from "../../data/rooms";
-import { DisplayedRoom } from "../../common/DisplayedRoom";
+import { DisplayedRoom } from "../../components/card/Store";
 // import css from "home.module.css";
-import Sidebar from "../../components/sidebar/Store";
+import Sidebar from "../../components/Nav/Sidebar/Store";
+
 import css from "./home.module.css";
 
 export default function Home() {
-	// const [data, setData] = useState({ Rooms });
-
 	const [filters, setFilters] = useState({});
 
 	const updateFilters = (searchRoom) => {
@@ -43,28 +42,17 @@ export default function Home() {
 	return (
 		<LayoutStore className={"bg-tertiary"}>
 			{/* <Container> */}
-			<div className="" style={{ marginTop: "5.5rem" }}>
+			<div className={css.MaxWidth}>
 				<div>
-					<Sidebar
-						color={"tertiary"}
-						SearchRoom={updateFilters}
-						className="fixed-top z-1 bg-light"
-						style={{
-							width: "32rem",
-							height: "100vh",
-							padding: "9rem 3rem 0rem 3rem",
-							zIndex: "19",
-							overflow: "auto",
-						}}
-					/>
+					<Sidebar SearchRoom={updateFilters} className={css.SideItem} />
 				</div>
 				<div>
-					<section className={css.MainContent}>
-						<div className="p-lg-4">
-							<div className="row row-cols-1 row-cols-xl-3">
+					<section className={css.MainWithSidebar}>
+						<div className='p-lg-4'>
+							<div className={css.RoomsDisplay}>
 								<DisplayedRoom
 									Rooms={filterData(DataRooms)}
-									className={"mb-4 mt-3 mx-1 rounded-4"}
+									className={css.RoomLink}
 								/>
 							</div>
 						</div>
