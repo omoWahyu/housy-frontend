@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Table, Modal } from "react-bootstrap";
+import { Image, Table, Modal, Button } from "react-bootstrap";
 import moment from "moment/moment";
 
 import logo from "../../../assets/icons/Logo.svg";
@@ -12,6 +12,17 @@ import css from "./index.module.css";
 export default function VerifyTransaction(props) {
 	const data = JSON.parse(localStorage.getItem("BookingData"));
 	const id = props.TransactionID;
+
+	const setApprove = () => {
+		data[id].status = "Approved";
+		localStorage.setItem("BookingData", JSON.stringify(data));
+		props.onHide();
+	};
+	const setCancel = () => {
+		data[id].status = "Cancel";
+		localStorage.setItem("BookingData", JSON.stringify(data));
+		props.onHide();
+	};
 	return (
 		<Modal {...props} size='xl' centered>
 			<Modal.Body className='p-4'>
@@ -22,7 +33,7 @@ export default function VerifyTransaction(props) {
 							<div className='pe-4'>
 								<h2>{data[id].RoomName}</h2>
 								<p style={{ width: "19.5rem" }}>{data[id].StreetName}</p>
-								{data[id].status === "Waiting" ? (
+								{data[id].status === "Pending" ? (
 									<span className={css.BadgeWarning}>Waiting Approve</span>
 								) : (
 									<span className={css.BadgeSuccess}>Approve</span>
@@ -109,7 +120,7 @@ export default function VerifyTransaction(props) {
 								<td colSpan='4'></td>
 								<td className='fw-semibold' style={{ width: "18rem" }}>
 									total <span style={{ padding: "0 2.45rem" }}></span> :{" "}
-									{data[id].status === "Waiting" ? (
+									{data[id].status === "Pending" ? (
 										<span className={"text-danger"}>
 											{conqurency(data[id].NetCost)}
 										</span>
@@ -122,6 +133,26 @@ export default function VerifyTransaction(props) {
 							</tr>
 						</tbody>
 					</Table>
+				</div>
+				<div className='d-flex justify-content-end'>
+					<div className='d-flex gap-3'>
+						<Button
+							size='lg'
+							type='button'
+							onClick={setCancel}
+							className={"btn btn-danger fw-bold fs-5 ms-auto px-4"}
+						>
+							Cancel
+						</Button>
+						<Button
+							size='lg'
+							type='button'
+							onClick={setApprove}
+							className={"btn btn-success fw-bold fs-5 ms-auto px-4"}
+						>
+							Approve
+						</Button>
+					</div>
 				</div>
 			</Modal.Body>
 		</Modal>

@@ -15,7 +15,7 @@ const LoginModal = (props) => {
 			Rooms: "",
 			payment: "",
 		};
-		const checkLogin = JSON.parse(localStorage.getItem("userData") || []);
+		const checkLogin = JSON.parse(localStorage.getItem("userData"));
 
 		if (!loginUser.username) {
 			alert("Form Username is required!");
@@ -27,7 +27,7 @@ const LoginModal = (props) => {
 		) {
 			alert("Berhasil Login");
 
-			const user = JSON.parse(localStorage.getItem("userData") || []).find(
+			const user = JSON.parse(localStorage.getItem("userData")).find(
 				(obj) => obj.username === loginUser.username
 			);
 			props.onHide();

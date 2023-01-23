@@ -24,6 +24,7 @@ export default function MyBooking() {
 	const RegistingHistory = (e) => {
 		const registingUser = {
 			fullname: users.fullname,
+			username: users.username,
 			gender: users.gender,
 			phone: users.phone,
 			NetCost: user.Rooms.cost,

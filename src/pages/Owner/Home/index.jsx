@@ -36,12 +36,12 @@ export default function Home() {
 											<td>{b.fullname}</td>
 											<td>{b.TOR}</td>
 											<td>bni.jpg</td>
-											{b.status === "Waiting" ? (
+											{b.status === "Pending" ? (
 												<td className={css.TextWarning}>Pending</td>
 											) : (
 												<>
-													{b.status === "Approve" ? (
-														<td className={css.TextSuccess}>Approve</td>
+													{b.status === "Approved" ? (
+														<td className={css.TextSuccess}>Approved</td>
 													) : (
 														<td className={css.TextDanger}>Cancel</td>
 													)}
@@ -55,19 +55,23 @@ export default function Home() {
 										</tr>
 									);
 								})}
+								<VerifyModal
+									TransactionID={id}
+									show={verifyModal}
+									onHide={() => setVerifyModal(false)}
+								/>
 							</>
 						) : (
-							<> Data Null</>
+							<tr>
+								{" "}
+								<td colSpan={6} className='text-center'>
+									Data Kosong
+								</td>
+							</tr>
 						)}
 					</tbody>
 				</Table>
 			</div>
-
-			<VerifyModal
-				TransactionID={id}
-				show={verifyModal}
-				onHide={() => setVerifyModal(false)}
-			/>
 		</Layout>
 	);
 }

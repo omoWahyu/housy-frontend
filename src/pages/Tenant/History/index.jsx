@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Layout from "../../../components/layouts/withSearchbar";
+import Layout from "../../../components/layouts/withoutSearchbar";
 
 import { Image, Table } from "react-bootstrap";
 import logo from "../../../assets/icons/Logo.svg";
@@ -13,7 +13,7 @@ import moment from "moment/moment";
 export default function History() {
 	const user = JSON.parse(localStorage.getItem("isLogin"));
 	const Book = JSON.parse(localStorage.getItem("BookingData")).find(
-		(obj) => obj.username === user.fullname
+		(obj) => obj.username === user.username
 	);
 	return (
 		<Layout className='bg-tertiary'>
@@ -28,7 +28,7 @@ export default function History() {
 										<div className='pe-4'>
 											<h2>{Book.RoomName}</h2>
 											<p style={{ width: "19.5rem" }}>{Book.StreetName}</p>
-											{Book.status === "Waiting" ? (
+											{Book.status === "Pending" ? (
 												<span className={css.BadgeWarning}>
 													Waiting Approve
 												</span>
@@ -119,7 +119,7 @@ export default function History() {
 											<td colSpan='4'></td>
 											<td className='fw-semibold' style={{ width: "18rem" }}>
 												total <span style={{ padding: "0 2.45rem" }}></span> :{" "}
-												{Book.status === "Waiting" ? (
+												{Book.status === "Pending" ? (
 													<span className={"text-danger"}>
 														{conqurency(Book.NetCost)}
 													</span>

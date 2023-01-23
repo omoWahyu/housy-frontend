@@ -35,7 +35,7 @@ function App() {
 					<Route path="/" element={<OwnerHome />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/addproperty" element={<AddProperty />} />
-					<Route path="/allhistory" element={<OwnerHistory />} />
+					<Route path="/history" element={<OwnerHistory />} />
 				</>
 			) : (
 				<>

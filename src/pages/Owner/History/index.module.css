@@ -1,5 +1,6 @@
 .MaxWidth {
-	padding-top: 5.75rem;
+	padding-top: 8.75rem;
+	padding-bottom: 2.75rem;
 	padding-left: 12px;
 	padding-right: 12px;
 	margin-right: auto;
@@ -9,7 +10,7 @@
 }
 
 .Card {
-	margin-top: 5.5rem;
+	margin-bottom: 2.5rem;
 	border-radius: 1rem;
 	background-color: white;
 	padding: 3rem;
