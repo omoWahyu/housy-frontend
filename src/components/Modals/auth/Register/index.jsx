@@ -17,6 +17,7 @@ const RegisterModal = (props) => {
 		if (!e.target.username.value) {
 			alert("Form Username is required!");
 		} else {
+			// Get data
 			const registingUser = {
 				fullname: e.target.fullname.value,
 				username: e.target.username.value,
@@ -26,14 +27,16 @@ const RegisterModal = (props) => {
 				gender: e.target.gender.value,
 				phone: e.target.phone.value,
 				address: e.target.address.value,
-				picture: "",
 			};
 
+			// Set user Image
 			registingUser.role === "Tenant"
 				? (registingUser.picture = "tenant.webp")
 				: (registingUser.picture = "owner.webp");
+
 			console.log("Registing User", registingUser);
 			console.log("current Registered Data", checkData);
+			
 			if (localStorage.getItem("userData")) {
 				localStorage.setItem(
 					"userData",

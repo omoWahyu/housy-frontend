@@ -9,7 +9,7 @@ const OrderModal = (props) => {
 	// const { id } = useParams();
 
 	const redirect = useNavigate();
-	const data = JSON.parse(localStorage.getItem("isLogin")) || [];
+	const data = JSON.parse(localStorage.getItem("isLogin"));
 	const saveBookDate = (e) => {
 		e.preventDefault();
 		const d = {

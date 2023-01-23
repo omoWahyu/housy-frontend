@@ -61,9 +61,19 @@
 	margin: 0;
 }
 
-.Badge {
-	background-color: #f8ecec;
-	color: #ec7a7a;
+.BadgeWarning {
+	background-color: #faefe0;
+	color: #ff9900;
 	border-radius: 0.5rem;
 	padding: 0.3rem 1.25rem;
+}
+
+.BadgeSuccess {
+	background-color: #e4f8e5;
+	color: #23e941;
+	border-radius: 0.5rem;
+	padding: 0.3rem 1.25rem;
+}
+.TextSuccess {
+	color: #23e941;
 }

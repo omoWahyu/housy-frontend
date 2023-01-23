@@ -7,8 +7,9 @@ import OrderModal from "../../../components/Modals/DetailModal";
 
 import { IoBed } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";
-import css from "./Detail.module.css";
-const Detail = (props) => {
+import css from "./index.module.css";
+
+export default function Detail(props) {
 	const [showModal, setShowModal] = useState(false);
 	const { id } = useParams();
 
@@ -106,6 +107,4 @@ const Detail = (props) => {
 			</div>
 		</Layout>
 	);
-};
-
-export default Detail;
+}

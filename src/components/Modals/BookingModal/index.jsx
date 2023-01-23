@@ -3,7 +3,7 @@ import { Modal, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 
 const PayBookingModal = (props) => {
-	const redirect = useNavigate();
+	// const redirect = useNavigate();
 	return (
 		<Modal
 			{...props}
@@ -15,7 +15,7 @@ const PayBookingModal = (props) => {
 				<Form.Text className='fs-3 text-black'>
 					Pembayaran Anda akan dikonfirmasi dalam 1 x 24 Jam untuk melihat
 					pesanan Klik{" "}
-					<Link to='' className='text-black fw-bold'>
+					<Link to='/history' className='text-black fw-bold'>
 						Disini
 					</Link>{" "}
 					Terima kasih
