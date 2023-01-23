@@ -12,6 +12,10 @@ import History from "./pages/Tenant/History";
 
 // Owner Pages
 import OwnerHome from "./pages/Owner/Home";
+import AddProperty from "./pages/Owner/AddProperty";
+import OwnerHistory from "./pages/Owner/History";
+
+// Login Checking
 import IsLogin from "./lib/IsLogin"
 
 // Err
@@ -29,6 +33,9 @@ function App() {
 			{isLogin && isLogin.role === "Owner" ? (
 				<>
 					<Route path="/" element={<OwnerHome />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/addproperty" element={<AddProperty />} />
+					<Route path="/allhistory" element={<OwnerHistory />} />
 				</>
 			) : (
 				<>

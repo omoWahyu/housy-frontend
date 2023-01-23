@@ -5,6 +5,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { FaRegUser, FaRegCalendar } from "react-icons/fa";
 import { TbHistory } from "react-icons/tb";
 import { IoLogOut } from "react-icons/io5";
+import { MdHomeWork } from "react-icons/md";
 
 import { Image } from "react-bootstrap";
 
@@ -107,10 +108,6 @@ export default function Header(props) {
 												src={profilImage + "tenant.webp"}
 											/>
 										)}
-										{/* <Image
-										className={css.ToggleImage}
-										src={"https://github.com/hyujisf.png"}
-									/> */}
 									</Dropdown.Toggle>
 
 									<Dropdown.Menu align='end' className={css.DropdownMenu}>
@@ -124,16 +121,29 @@ export default function Header(props) {
 											</div>
 											<span className='fs-5 fw-medium'>Profile</span>
 										</Dropdown.Item>
-										<Dropdown.Item
-											as={Link}
-											to='/mybooking'
-											className={css.DropMenu}
-										>
-											<div className='rounded-pill bg-tertiary'>
-												<FaRegCalendar className='m-2 text-primary' />
-											</div>
-											<span className='fs-5 fw-medium'>My Booking</span>
-										</Dropdown.Item>
+										{isLogin.role === "Owner" ? (
+											<Dropdown.Item
+												as={Link}
+												to='/mybooking'
+												className={css.DropMenu}
+											>
+												<div className='rounded-pill bg-tertiary'>
+													<MdHomeWork className='m-2 text-primary' />
+												</div>
+												<span className='fs-5 fw-medium'>Add Property</span>
+											</Dropdown.Item>
+										) : (
+											<Dropdown.Item
+												as={Link}
+												to='/mybooking'
+												className={css.DropMenu}
+											>
+												<div className='rounded-pill bg-tertiary'>
+													<FaRegCalendar className='m-2 text-primary' />
+												</div>
+												<span className='fs-5 fw-medium'>My Booking</span>
+											</Dropdown.Item>
+										)}
 										<Dropdown.Item
 											as={Link}
 											to='/history'

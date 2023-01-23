@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../../../components/layouts/withSearchbar";
-import Modal from "../../../components/Modals/BookingModal";
+import Modal from "../../../components/Modals/Booking";
 
 import { Button, Image, Table } from "react-bootstrap";
 import logo from "../../../assets/icons/Logo.svg";
@@ -38,7 +38,7 @@ export default function MyBooking() {
 			checkout: moment(user.checkout).format("DD MMMM YYYY"),
 			TOR: user.Rooms.TOR,
 			amenities: user.Rooms.amenities,
-			status: "Waiting",
+			status: "Pending",
 		};
 
 		if (localStorage.getItem("BookingData")) {

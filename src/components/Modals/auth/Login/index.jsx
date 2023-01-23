@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { redirect } from "react-router-dom";
+// import { redirect } from "react-router-dom";
 // import RegisterModal from "../Register";
 
 const LoginModal = (props) => {

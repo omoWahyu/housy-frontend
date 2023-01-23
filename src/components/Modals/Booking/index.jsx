@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Form } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PayBookingModal = (props) => {
 	// const redirect = useNavigate();
