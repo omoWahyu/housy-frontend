@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Layout from "../../../components/layouts/withoutSearchbar";
+import Layout from "../../../components/layouts/withSearchbar";
 
 import { Image, Table } from "react-bootstrap";
 import logo from "../../../assets/icons/Logo.svg";
