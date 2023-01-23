@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import { redirect } from "react-router-dom";
 // import RegisterModal from "../Register";
 
 const LoginModal = (props) => {
@@ -8,12 +9,13 @@ const LoginModal = (props) => {
 		const loginUser = {
 			username: e.target.username.value,
 			password: e.target.password.value,
+			role: "",
 			checkin: "",
 			checkout: "",
 			Rooms: "",
 			payment: "",
 		};
-		const checkLogin = JSON.parse(localStorage.getItem("userData")) || [];
+		const checkLogin = JSON.parse(localStorage.getItem("userData") || []);
 
 		if (!loginUser.username) {
 			alert("Form Username is required!");
@@ -24,8 +26,17 @@ const LoginModal = (props) => {
 			checkLogin.find((userData) => userData.username === loginUser.username)
 		) {
 			alert("Berhasil Login");
+
+			const user = JSON.parse(localStorage.getItem("userData") || []).find(
+				(obj) => obj.username === loginUser.username
+			);
 			props.onHide();
+			loginUser.role = user.role;
 			localStorage.setItem("isLogin", JSON.stringify(loginUser));
+			if (user.role === "Owner") {
+				window.location.href = "/";
+			}
+			// redirect("/");
 		} else if (!checkLogin) {
 			alert("Your Account is not Registered!");
 		} else {

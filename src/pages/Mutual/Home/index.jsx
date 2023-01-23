@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import LayoutStore from "../../components/layouts/withSearchbar";
-import DataRooms from "../../data/rooms";
-import { DisplayedRoom } from "../../components/card/Store";
+import LayoutStore from "../../../components/layouts/withSearchbar";
+import DataRooms from "../../../data/rooms";
+import { DisplayedRoom } from "../../../components/card/Store";
 // import css from "home.module.css";
-import Sidebar from "../../components/Nav/Sidebar/Store";
+import Sidebar from "../../../components/Nav/Sidebar/Store";
 
-import css from "./home.module.css";
+import css from "./Home.module.css";
 
 export default function Home() {
 	const [filters, setFilters] = useState({});

@@ -9,7 +9,7 @@ const OrderModal = (props) => {
 	// const { id } = useParams();
 
 	const redirect = useNavigate();
-	const data = JSON.parse(localStorage.getItem("isLogin"));
+	const data = JSON.parse(localStorage.getItem("isLogin")) || [];
 	const saveBookDate = (e) => {
 		e.preventDefault();
 		const d = {
@@ -23,7 +23,8 @@ const OrderModal = (props) => {
 		}
 		if (!d.checkout) {
 			alert("Form checkout is required!");
-		} else {
+		}
+		if (data !== null) {
 			const checkinFormat = moment(d.checkin).format("YYYY-MM-DD");
 			const checkoutFormat = moment(d.checkout).format("YYYY-MM-DD");
 
@@ -32,6 +33,8 @@ const OrderModal = (props) => {
 			data.Rooms = d.Rooms;
 			localStorage.setItem("isLogin", JSON.stringify(data));
 			redirect("/mybooking");
+		} else {
+			alert("Kamu belum login!");
 		}
 	};
 

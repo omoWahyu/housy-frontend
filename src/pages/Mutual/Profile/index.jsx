@@ -12,13 +12,14 @@ import {
 	MdPersonPinCircle,
 } from "react-icons/md";
 import { TbGenderBigender } from "react-icons/tb";
+import PassModal from "../../../components/Modals/auth/ChangePasswordmodal";
+import Layout from "../../../components/layouts/withSearchbar";
 
-import PassModal from "../../components/Common/ChangePasswordmodal";
-
-import Layout from "../../components/layouts/withSearchbar";
-const Profile = () => {
+export default function Profile() {
 	const [PasswordModal, setPasswordModal] = useState(false);
 	const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+	const profilImage = process.env.PUBLIC_URL + "/img/Profile/";
+
 	const user = JSON.parse(localStorage.getItem("userData")).find(
 		(obj) => obj.username === isLogin.username
 	);
@@ -91,10 +92,17 @@ const Profile = () => {
 							</div>
 							<div className={css.CardRight}>
 								<div className={css.WrapperCardImage}>
-									<Image
-										className={css.CardImage}
-										src={"https://github.com/hyujisf.png"}
-									/>
+									{isLogin && isLogin.role === "Owner" ? (
+										<Image
+											className={css.CardImage}
+											src={profilImage + "owner.webp"}
+										/>
+									) : (
+										<Image
+											className={css.CardImage}
+											src={profilImage + "tenant.webp"}
+										/>
+									)}
 									{/* <Link to='/'>back to home</Link> */}
 								</div>
 								<Button className={"btn btn-primary w-100 py-3 fw-bold fs-5"}>
@@ -113,6 +121,4 @@ const Profile = () => {
 			/>
 		</Layout>
 	);
-};
-
-export default Profile;
+}
