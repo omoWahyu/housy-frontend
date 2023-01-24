@@ -124,7 +124,7 @@ export default function Header(props) {
 										{isLogin.role === "Owner" ? (
 											<Dropdown.Item
 												as={Link}
-												to='/mybooking'
+												to='/addproperty'
 												className={css.DropMenu}
 											>
 												<div className='rounded-pill bg-tertiary'>
