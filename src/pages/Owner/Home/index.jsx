@@ -14,7 +14,7 @@ export default function Home() {
 		<Layout className={"bg-tertiary"}>
 			<div className={css.MaxWidth}>
 				<div className={css.Card}>
-					<h2 className='fw-bold  fs-1 my-4'>Incoming Transaction</h2>
+					<h2 className='fw-bold fs-1 my-4'>Incoming Transaction</h2>
 					<Table hover size='lg' className={css.TableData}>
 						<thead>
 							<tr>
