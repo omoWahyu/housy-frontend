@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Layout from "../../../components/layouts/withSearchbar";
-import Modal from "../../../components/Modals/Booking";
+import Layout from "layouts/withSearchbar";
+import Modal from "components/Modals/Booking";
 
 import { Button, Image, Table } from "react-bootstrap";
-import logo from "../../../assets/icons/Logo.svg";
-import Stepper from "../../../assets/icons/Stepper.svg";
+import logo from "assets/icons/Logo.svg";
+import Stepper from "assets/icons/Stepper.svg";
 
 import css from "./index.module.css";
-import { conqurency } from "../../../lib/math";
+import { conqurency } from "lib/math";
 
 import moment from "moment/moment";
 export default function MyBooking() {

@@ -10,9 +10,9 @@ import { MdHomeWork } from "react-icons/md";
 import { Image } from "react-bootstrap";
 
 // Components
-import LoginModal from "../../Modals/auth/Login";
-import logo from "../../../assets/icons/Logo.svg";
-import RegisterModal from "../../Modals/auth/Register";
+import LoginModal from "components/Modals/auth/Login";
+import logo from "assets/icons/Logo.svg";
+import RegisterModal from "components/Modals/auth/Register";
 
 import {
 	Navbar,

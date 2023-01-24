@@ -13,7 +13,7 @@ import {
 } from "react-icons/md";
 import { TbGenderBigender } from "react-icons/tb";
 import PassModal from "../../../components/Modals/auth/ChangePasswordmodal";
-import Layout from "../../../components/layouts/withSearchbar";
+import Layout from "../../../layouts/withSearchbar";
 
 export default function Profile() {
 	const [PasswordModal, setPasswordModal] = useState(false);

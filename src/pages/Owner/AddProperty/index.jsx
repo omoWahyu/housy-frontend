@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/layouts/withoutSearchbar";
+import Layout from "layouts/withoutSearchbar";
 import { Form, Container, Col, Button } from "react-bootstrap";
 
 import css from "./index.module.css";

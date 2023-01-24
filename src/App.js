@@ -2,27 +2,27 @@ import React from 'react'
 import { Routes, Route } from "react-router-dom";
 
 // Mutual Pages
-import Home from "./pages/Mutual/Home";
-import Profile from "./pages/Mutual/Profile";
-import Detail from "./pages/Mutual/Detail";
+import Home from "pages/Mutual/Home";
+import Profile from "pages/Mutual/Profile";
+import Detail from "pages/Mutual/Detail";
 
 // Tenant Pages
-import MyBooking from "./pages/Tenant/MyBooking";
-import History from "./pages/Tenant/History";
+import MyBooking from "pages/Tenant/MyBooking";
+import History from "pages/Tenant/History";
 
 // Owner Pages
-import OwnerHome from "./pages/Owner/Home";
-import AddProperty from "./pages/Owner/AddProperty";
-import OwnerHistory from "./pages/Owner/History";
+import OwnerHome from "pages/Owner/Home";
+import AddProperty from "pages/Owner/AddProperty";
+import OwnerHistory from "pages/Owner/History";
 
 // Login Checking
-import IsLogin from "./lib/IsLogin"
+import IsLogin from "lib/IsLogin"
 
 // Err
-import ErrNoMatch from "./pages/error"
+import ErrNoMatch from "pages/error"
 
 // Data
-import DataRooms from "./data/rooms";
+import DataRooms from "data/rooms";
 
 const isLogin = JSON.parse(localStorage.getItem("isLogin"));
 

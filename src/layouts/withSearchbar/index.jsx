@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../Nav/Navbar";
+import Navbar from "../../components/Nav/Navbar";
 
 // import { Container } from "react-bootstrap";
 export default function Store(props) {
@@ -7,7 +7,7 @@ export default function Store(props) {
 		<div className={props.className}>
 			<Navbar
 				style={{ zIndex: "20" }}
-				useSearchBar={false}
+				useSearchBar={true}
 				className={"bg-light fixed-top z-2"}
 			/>
 			{props.children}
