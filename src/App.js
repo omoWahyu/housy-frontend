@@ -22,7 +22,7 @@ import IsLogin from "lib/IsLogin"
 import ErrNoMatch from "pages/error"
 
 // Data
-import DataRooms from "data/rooms";
+import DataRooms from "./data/rooms";
 
 const isLogin = JSON.parse(localStorage.getItem("isLogin"));
 
