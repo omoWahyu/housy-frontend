@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Image, Button } from "react-bootstrap";
 
-import Layout from "../../../layouts/withoutSearchbar";
-import OrderModal from "../../../components/Modals/Detail";
+import Layout from "layouts/withoutSearchbar";
+import OrderModal from "components/Modals/Detail";
 
 import { IoBed } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";

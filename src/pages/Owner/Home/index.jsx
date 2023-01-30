@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { RxMagnifyingGlass } from "react-icons/rx";
 
-import Layout from "../../../layouts/withoutSearchbar";
-import VerifyModal from "../../../components/Modals/VerifyTransaction";
+import Layout from "layouts/withoutSearchbar";
+import VerifyModal from "components/Modals/VerifyTransaction";
 import css from "./index.module.css";
 
 export default function Home() {

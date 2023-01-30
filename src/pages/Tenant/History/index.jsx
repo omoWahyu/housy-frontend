@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Layout from "../../../layouts/withSearchbar";
+import Layout from "layouts/withSearchbar";
 
 import { Image, Table } from "react-bootstrap";
-import logo from "../../../assets/icons/Logo.svg";
-import Stepper from "../../../assets/icons/Stepper.svg";
+import logo from "assets/icons/Logo.svg";
+import Stepper from "assets/icons/Stepper.svg";
 
 import css from "./index.module.css";
-import { conqurency } from "../../../lib/math";
+import { conqurency } from "lib/math";
 
 import moment from "moment/moment";
 export default function History() {

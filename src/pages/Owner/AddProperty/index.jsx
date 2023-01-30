@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "layouts/withoutSearchbar";
-import { Form, Container, Col, Button } from "react-bootstrap";
+import { Form, Col, Button } from "react-bootstrap";
 
 import css from "./index.module.css";
 
