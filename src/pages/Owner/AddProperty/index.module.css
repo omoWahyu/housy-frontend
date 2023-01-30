@@ -1,0 +1,40 @@
+.MaxWidth {
+	padding-top: 12rem;
+	padding-bottom: 5rem;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	max-width: 960px;
+}
+
+.Card {
+	padding: 4rem;
+	border-radius: 2rem;
+	background-color: white;
+}
+
+.TableData {
+	padding: 2rem auto !important;
+}
+
+.TextSuccess {
+	color: #0acf83;
+}
+.TextDanger {
+	color: #ff0742;
+}
+.TextWarning {
+	color: #f7941e;
+}
+
+.IconButton {
+	cursor: pointer;
+	color: aqua;
+	font-size: 2rem;
+	transition: all 200ms ease-in-out;
+}
+
+.IconButton:hover {
+	color: #7700ff;
+	font-size: 2rem;
+}
