@@ -10,9 +10,9 @@ import { MdHomeWork } from "react-icons/md";
 import { Image } from "react-bootstrap";
 
 // Components
-import LoginModal from "components/Modals/auth/Login";
+import LoginModal from "components/Modals/Login";
 import logo from "assets/icons/Logo.svg";
-import RegisterModal from "components/Modals/auth/Register";
+import RegisterModal from "components/Modals/Register";
 
 import {
 	Navbar,
@@ -22,7 +22,7 @@ import {
 	Form,
 	Dropdown,
 } from "react-bootstrap";
-import css from "./header.module.css";
+import css from "./Navbar.module.css";
 
 export default function Header(props) {
 	const [loginModal, setLoginModal] = useState(false);

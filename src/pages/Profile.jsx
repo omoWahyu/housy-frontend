@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 
-import css from "./index.module.css";
+import css from "./Profile.module.css";
 import { Image, Button } from "react-bootstrap";
 
 import { HiUserCircle, HiMail } from "react-icons/hi";

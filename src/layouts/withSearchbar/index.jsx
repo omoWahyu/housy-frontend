@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Nav/Navbar";
+import Navbar from "../../components/Navbar";
 
 // import { Container } from "react-bootstrap";
 export default function Store(props) {

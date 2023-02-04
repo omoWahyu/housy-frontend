@@ -8,7 +8,7 @@ import logo from "assets/icons/Logo.svg";
 import Stepper from "assets/icons/Stepper.svg";
 
 import css from "./index.module.css";
-import { conqurency } from "lib/math";
+import { conqurency } from "lib/Currency";
 
 import moment from "moment/moment";
 export default function MyBooking() {

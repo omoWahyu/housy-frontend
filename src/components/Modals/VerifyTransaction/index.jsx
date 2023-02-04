@@ -5,7 +5,7 @@ import moment from "moment/moment";
 import logo from "../../../assets/icons/Logo.svg";
 import Stepper from "../../../assets/icons/Stepper.svg";
 
-import { conqurency } from "../../../lib/math";
+import { conqurency } from "../../../lib/Currency";
 
 import css from "./index.module.css";
 

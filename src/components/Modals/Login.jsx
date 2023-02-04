@@ -1,0 +1,148 @@
+import React, { useContext, useState } from "react";
+import { Button, Modal, Form } from "react-bootstrap";
+import { AppContext } from "context/AppContext";
+import { useMutation } from "react-query";
+import { API } from "lib/api";
+import { Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+// import { redirect } from "react-router-dom";
+// import RegisterModal from "../Register";
+
+export default function LoginModal(props) {
+	let navigate = useNavigate();
+
+	const title = "Login";
+	document.title = "DumbMerch | " + title;
+
+	const [state, dispatch] = useContext(AppContext);
+
+	const [message, setMessage] = useState(null);
+	const [form, setForm] = useState({
+		username: "",
+		password: "",
+	});
+
+	const { username, password } = form;
+
+	const handleChange = (e) => {
+		setForm({
+			...form,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = useMutation(async (e) => {
+		try {
+			e.preventDefault();
+
+			// Configuration
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+				},
+			};
+
+			// Data body
+			const body = JSON.stringify(form);
+
+			// Insert data for login process
+			const response = await API.post("/login", body, config);
+
+			// Checking process
+			if (response?.status === 200) {
+				// Send data to useContext
+				dispatch({
+					type: "LOGIN",
+					payload: response.data.data,
+				});
+
+				// Status check
+				if (response.data.data.list_as_id === "Owner") {
+					navigate("/complain-admin");
+				} else {
+					navigate("/");
+				}
+
+				const alert = (
+					<Alert variant='success' className='py-1' dismissible>
+						Login success
+					</Alert>
+				);
+				setMessage(alert);
+			}
+
+			props.onHide();
+		} catch (error) {
+			const alert = (
+				<Alert variant='danger' className='py-1'>
+					Login failed
+				</Alert>
+			);
+			setMessage(alert);
+			console.log(error);
+		}
+	});
+
+	return (
+		<Modal
+			{...props}
+			size='md'
+			aria-labelledby='contained-modal-title-vcenter'
+			centered
+		>
+			<Modal.Body className='m-3'>
+				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
+				{message && message}
+				<Form onSubmit={(e) => handleSubmit.mutate(e)}>
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='username' className='fw-bold fs-4'>
+							Username
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='text'
+							id='username'
+							placeholder='Username'
+							className='bg-tertiary'
+							value={username}
+							name='username'
+							onChange={handleChange}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mb-3'>
+						<Form.Label htmlFor='Password' className='fw-bold fs-4'>
+							Password
+						</Form.Label>
+						<Form.Control
+							size='lg'
+							type='password'
+							id='Password'
+							placeholder='Password'
+							className='bg-tertiary'
+							value={password}
+							name='password'
+							onChange={handleChange}
+						/>
+					</Form.Group>
+
+					<Form.Group className='ms-auto mb-4'>
+						<Button size='lg' type='submit' className='mt-4 py-3 px-4 w-100'>
+							Sign in
+						</Button>
+					</Form.Group>
+
+					<Form.Text id='passwordHelpBlock' muted>
+						Don't have an acount? Click
+						<span
+							// onClick={(e) => goRegister()}
+							className={"btn btn-link pb-2 px-1"}
+						>
+							here
+						</span>
+					</Form.Text>
+				</Form>
+			</Modal.Body>
+		</Modal>
+	);
+}

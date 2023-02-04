@@ -24,8 +24,8 @@ export default function Sidebar(props) {
 		props.SearchRoom({
 			duration: durationVal,
 			date: dateVal,
-			bed: bedVal,
-			bath: bathVal,
+			bedroom: bedVal,
+			bathroom: bathVal,
 			amenities: amenitiesVal,
 			budget: budgetVal,
 		});
@@ -121,7 +121,7 @@ export default function Sidebar(props) {
 									{bed.map((bedData, idk) => (
 										<ToggleButton
 											key={idk}
-											name='bed'
+											name='bedroom'
 											type='radio'
 											id={`bed-${idk}`}
 											variant={
@@ -143,7 +143,7 @@ export default function Sidebar(props) {
 									{bath.map((bathData, idk) => (
 										<ToggleButton
 											key={idk}
-											name='bath'
+											name='bathroom'
 											type='radio'
 											id={`bath-${idk}`}
 											variant={

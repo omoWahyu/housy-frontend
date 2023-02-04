@@ -1,16 +1,24 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { API } from "lib/api";
+// import axios from "axios";
+import { useQuery } from "react-query";
 
-import { conqurency } from "../../../lib/math";
+import { toCurrency } from "lib/Currency";
 
-function DisplayedRoom(props) {
-	console.log("data showed", props.Rooms);
+export default function CardProperties(props) {
+	let { data: properties } = useQuery("propertiesCache", async () => {
+		const response = await API.get("/properties");
+		return response.data.data;
+	});
+
+	console.log("data showed", properties);
 	return (
 		<>
-			{props.Rooms.map((room, k) => {
+			{properties?.map((room, k) => {
 				return (
 					<Link
-						to={"/detail/" + k}
+						to={"/detail/" + room.id}
 						key={k}
 						className='w-100'
 						style={{ textDecoration: "none" }}
@@ -26,19 +34,22 @@ function DisplayedRoom(props) {
 							<Card.Img
 								variant='top'
 								className='p-2'
-								src={process.env.PUBLIC_URL + "/img/rooms/" + room.imageUrl}
+								src={
+									// "https://3408-2404-8000-1004-b94f-71a6-be6-bec4-1ca1.ap.ngrok.io/uploads/"
+									"http://localhost:5000/uploads/" + room.image
+								}
 							/>
 							<Card.Body>
 								<Card.Title>
 									<strong>
-										{conqurency(room.cost)} / {room.TOR}
+										{toCurrency(room.price)} / {room.type_rent}
 									</strong>
 								</Card.Title>
 								<Card.Subtitle className='mb-2'>
-									{room.bed} Beds, {room.bath} Bath, {room.size} Sqft
+									{room.bedroom} Beds, {room.bathroom} Bath, {room.size} Sqft
 								</Card.Subtitle>
 								<Card.Text>
-									{room.townAddress}, {room.districtAddress}
+									{room.address}, {room.city.name}
 								</Card.Text>
 								{/* <Button variant="primary">Go somewhere</Button> */}
 							</Card.Body>
@@ -49,5 +60,3 @@ function DisplayedRoom(props) {
 		</>
 	);
 }
-
-export { DisplayedRoom };

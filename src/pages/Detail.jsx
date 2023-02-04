@@ -7,7 +7,7 @@ import OrderModal from "components/Modals/Detail";
 
 import { IoBed } from "react-icons/io5";
 import { GiBathtub } from "react-icons/gi";
-import css from "./index.module.css";
+import css from "./Detail.module.css";
 
 export default function Detail(props) {
 	const [showModal, setShowModal] = useState(false);
