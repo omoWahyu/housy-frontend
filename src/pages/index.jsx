@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 // import css from "home.module.css";
 import Sidebar from "components/SidebarStore";
 
-// import css from "./index.module.css";
+import css from "./index.module.css";
 
 export default function Home() {
 	const [filters, setFilters] = useState({});
@@ -50,16 +50,16 @@ export default function Home() {
 	return (
 		<LayoutStore className={"bg-tertiary"}>
 			{/* <Container> */}
-			<div className={"MaxWidth"}>
+			<div className={css.MaxWidth}>
 				<div>
-					<Sidebar SearchProperty={updateFilters} className={"SideItem"} />
+					<Sidebar SearchProperty={updateFilters} className={css.SideItem} />
 				</div>
 				<div>
-					<section className={"MainWithSidebar"}>
+					<section className={css.MainWithSidebar}>
 						<div className='p-lg-4'>
-							<div className={"RoomsDisplay"}>
+							<div className={css.RoomsDisplay}>
 								{/* <Card Rooms={filterData(properties)} className={"RoomLink"} /> */}
-								<Card Rooms={properties} className={"RoomLink"} />
+								<Card Rooms={properties} className={css.RoomLink} />
 							</div>
 						</div>
 					</section>

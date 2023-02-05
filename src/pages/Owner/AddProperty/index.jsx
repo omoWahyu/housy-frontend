@@ -32,7 +32,7 @@ export default function AddProperty() {
 				<div className={css.Card}>
 					<h2 className='fw-bold fs-1 my-4'>Add Property</h2>
 					<Form className='fw-bold'>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Name Property</Form.Label>
 							<Form.Control
 								size='lg'
@@ -43,7 +43,7 @@ export default function AddProperty() {
 								autoFocus
 							/>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>City</Form.Label>
 							<Form.Select
 								size='lg'
@@ -52,12 +52,12 @@ export default function AddProperty() {
 								type='text'
 								className='bg-tertiary'
 							>
-								{cities.map((e) => {
-									return <option>{e.value}</option>;
+								{cities.map((e, k) => {
+									return <option key={k}>{e.value}</option>;
 								})}
 							</Form.Select>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Address</Form.Label>
 							<Form.Control
 								size='lg'
@@ -69,7 +69,7 @@ export default function AddProperty() {
 								className='bg-tertiary'
 							/>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Price</Form.Label>
 							<Form.Control
 								size='lg'
@@ -79,7 +79,7 @@ export default function AddProperty() {
 								className='bg-tertiary'
 							/>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Type of Rent</Form.Label>
 							<Form.Select
 								size='lg'
@@ -88,12 +88,12 @@ export default function AddProperty() {
 								type='text'
 								className='bg-tertiary'
 							>
-								{period.map((e) => {
-									return <option>{e.value}</option>;
+								{period.map((e, k) => {
+									return <option key={k}>{e.value}</option>;
 								})}
 							</Form.Select>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Amenities</Form.Label>
 							<div
 								className='d-flex gap-5'
@@ -101,25 +101,22 @@ export default function AddProperty() {
 							>
 								<Form.Check
 									//   style={{ fontWeight: "300", fontSize: "1.2rem" }}
-									type='check'
 									id='furnished'
 									label='Furnished'
 								/>
 								<Form.Check
 									//   style={{ fontWeight: "300", fontSize: "1.2rem" }}
-									type='check'
 									id='pet-allowed'
 									label='Pet Allowed'
 								/>
 								<Form.Check
 									//   style={{ fontWeight: "500", fontSize: "1.2rem" }}
-									type='check'
 									id='shared-accomodation'
 									label='Shared Acconodation'
 								/>
 							</div>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Bed Room</Form.Label>
 							<Form.Select
 								size='lg'
@@ -128,12 +125,12 @@ export default function AddProperty() {
 								type='text'
 								className='bg-tertiary'
 							>
-								{nums.map((e) => {
-									return <option>{e.value}</option>;
+								{nums.map((e, k) => {
+									return <option key={k}>{e.value}</option>;
 								})}
 							</Form.Select>
 						</Form.Group>
-						<Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+						<Form.Group className='mb-3'>
 							<Form.Label>Bath Room</Form.Label>
 							<Form.Select
 								size='lg'
@@ -142,8 +139,8 @@ export default function AddProperty() {
 								type='text'
 								className='bg-tertiary'
 							>
-								{nums.map((e) => {
-									return <option>{e.value}</option>;
+								{nums.map((e, k) => {
+									return <option key={k}>{e.value}</option>;
 								})}
 							</Form.Select>
 						</Form.Group>

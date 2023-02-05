@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from 'context/AppContext';
 
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 export default function PrivateRoute() {
-  const Redirect = useNavigate()
-  return localStorage.getItem("isLogin") !== null ? <Outlet /> : <Redirect to="/" />
+  const [state, dispatch] = useContext(AppContext)
+  return state.isLogin === true ? <Outlet /> : <Navigate to="/" />
 }

@@ -8,7 +8,7 @@ import logo from "assets/icons/Logo.svg";
 import Stepper from "assets/icons/Stepper.svg";
 
 import css from "./index.module.css";
-import { conqurency } from "lib/Currency";
+import { toCurrency } from "lib/Currency";
 
 import moment from "moment/moment";
 export default function MyBooking() {
@@ -159,7 +159,7 @@ export default function MyBooking() {
 											<td className='fw-semibold' style={{ width: "18rem" }}>
 												total <span style={{ padding: "0 2.45rem" }}></span> :{" "}
 												<span className='text-danger'>
-													{conqurency(user.Rooms.cost)}
+													{toCurrency(user.Rooms.cost)}
 												</span>
 											</td>
 										</tr>

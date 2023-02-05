@@ -1,75 +1,97 @@
-import React from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Alert, Button, Modal, Form } from "react-bootstrap";
+import { useMutation } from "react-query";
+import { API } from "lib/api";
 
 import css from "./Register.module.css";
 
 const RegisterModal = (props) => {
 	// const [isRegistered, setIsRegistered] = useState([]);
 
-	const checkData = JSON.parse(localStorage.getItem("userData"));
+	const [message, setMessage] = useState(null);
+	const [form, setForm] = useState({
+		fullname: "",
+		username: "",
+		email: "",
+		password: "",
+		list_as_id: "",
+		gender: "",
+		phone: "",
+		address: "",
+	});
 
-	const RegistSubmit = (e) => {
-		e.preventDefault();
+	const {
+		fullname,
+		username,
+		email,
+		password,
+		list_as_id,
+		gender,
+		phone,
+		address,
+	} = form;
 
-		if (!e.target.fullname.value) {
-			alert("Form Fullname is required!");
-		}
-		if (!e.target.username.value) {
-			alert("Form Username is required!");
-		} else {
-			// Get data
-			const registingUser = {
-				fullname: e.target.fullname.value,
-				username: e.target.username.value,
-				email: e.target.email.value,
-				password: e.target.password.value,
-				role: e.target.list.value,
-				gender: e.target.gender.value,
-				phone: e.target.phone.value,
-				address: e.target.address.value,
+	const handleChange = (e) => {
+		setForm({
+			...form,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = useMutation(async (e) => {
+		try {
+			e.preventDefault();
+
+			// Configuration Content-type
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+				},
 			};
 
-			// Set user Image
-			registingUser.role === "Tenant"
-				? (registingUser.picture = "tenant.webp")
-				: (registingUser.picture = "owner.webp");
+			// Data body
+			const body = JSON.stringify(form);
 
-			console.log("Registing User", registingUser);
-			console.log("current Registered Data", checkData);
-			
-			if (localStorage.getItem("userData")) {
-				localStorage.setItem(
-					"userData",
-					JSON.stringify([...checkData, registingUser])
-				);
+			// Insert data user to database
+			const response = await API.post("/register", body, config);
+
+			// Notification
+			if (response.data != null) {
+				alert("Successfully Sign Up");
+				setForm({
+					fullname: "",
+					username: "",
+					email: "",
+					password: "",
+					list_as_id: "",
+					gender: "",
+					phone: "",
+					address: "",
+				});
+				props.onHide();
+				props.toLogin();
 			} else {
-				localStorage.setItem("userData", JSON.stringify([registingUser]));
+				const alert = (
+					<Alert variant='danger' className='py-1'>
+						Sign Up Failed{<br></br>}Field Cannot be Empty!!!
+					</Alert>
+				);
+				setMessage(alert);
 			}
-			alert("Registration successful!");
-			props.onHide();
-			props.toLogin();
+		} catch (error) {
+			const alert = (
+				<Alert variant='danger' className='py-1'>
+					Sign Up Failed{<br></br>}Field Cannot be Empty!!!
+				</Alert>
+			);
+			setMessage(alert);
+			console.log(error);
 		}
-		if (!e.target.email.value) {
-			alert("Form Email is required!");
-		}
-		if (!e.target.password.value) {
-			alert("Form Password is required!");
-		}
-		if (!e.target.list.value) {
-			alert("Form List As is required!");
-		}
-		if (!e.target.gender.value) {
-			alert("Form Gender At is required!");
-		}
-		if (!e.target.phone.value) {
-			alert("Form Phone At is required!");
-		}
-		if (!e.target.address.value) {
-			alert("Form Address At is required!");
-		}
-	};
+	});
+
 	const ListAsData = [{ value: "Tenant" }, { value: "Owner" }];
-	const GenderData = [{ value: "Laki-laki" }, { value: "Perempuan" }];
+	const GenderData = [{ value: "Male" }, { value: "Female" }];
+
 	return (
 		<Modal
 			{...props}
@@ -79,7 +101,7 @@ const RegisterModal = (props) => {
 		>
 			<Modal.Body className={css.Modal}>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign up</h1>
-				<Form className={css.Form} onSubmit={RegistSubmit}>
+				<Form className={css.Form} onSubmit={(e) => handleSubmit.mutate(e)}>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='fullname' className='fw-bold fs-4'>
 							Full Name
@@ -92,6 +114,8 @@ const RegisterModal = (props) => {
 							placeholder='Fullname'
 							className='bg-tertiary'
 							name='fullname'
+							onChange={handleChange}
+							value={fullname}
 						/>
 					</Form.Group>
 
@@ -106,6 +130,8 @@ const RegisterModal = (props) => {
 							placeholder='Username'
 							className='bg-tertiary'
 							name='username'
+							onChange={handleChange}
+							value={username}
 						/>
 					</Form.Group>
 
@@ -120,6 +146,8 @@ const RegisterModal = (props) => {
 							placeholder='Email'
 							className='bg-tertiary'
 							name='email'
+							onChange={handleChange}
+							value={email}
 						/>
 					</Form.Group>
 
@@ -134,6 +162,8 @@ const RegisterModal = (props) => {
 							placeholder='Password'
 							className='bg-tertiary'
 							name='password'
+							onChange={handleChange}
+							value={password}
 						/>
 					</Form.Group>
 
@@ -144,12 +174,14 @@ const RegisterModal = (props) => {
 						<Form.Select
 							size='lg'
 							id='list'
-							name='list'
 							className='bg-tertiary'
+							name='list_as_id'
+							onChange={handleChange}
+							value={list_as_id}
 						>
 							<option>--Choose--</option>
-							{ListAsData.map((option, idk) => (
-								<option key={idk} value={option.value}>
+							{ListAsData.map((option, k) => (
+								<option key={k} value={option.value}>
 									{option.value}
 								</option>
 							))}
@@ -163,12 +195,14 @@ const RegisterModal = (props) => {
 						<Form.Select
 							size='lg'
 							id='gender'
-							name='gender'
 							className='bg-tertiary'
+							name='gender'
+							onChange={handleChange}
+							value={gender}
 						>
 							<option>--Choose--</option>
-							{GenderData.map((option, idk) => (
-								<option key={idk} value={option.value}>
+							{GenderData.map((option, k) => (
+								<option key={k} value={option.value}>
 									{option.value}
 								</option>
 							))}
@@ -186,6 +220,8 @@ const RegisterModal = (props) => {
 							placeholder='Phone'
 							className='bg-tertiary'
 							name='phone'
+							onChange={handleChange}
+							value={phone}
 						/>
 					</Form.Group>
 
@@ -202,6 +238,8 @@ const RegisterModal = (props) => {
 							name='address'
 							// value={isRegistered.address}
 							className='bg-tertiary'
+							onChange={handleChange}
+							value={address}
 						/>
 					</Form.Group>
 

@@ -49,29 +49,40 @@ export default function LoginModal(props) {
 			const response = await API.post("/login", body, config);
 
 			// Checking process
-			if (response?.status === 200) {
+			if (response.data != null) {
 				// Send data to useContext
 				dispatch({
-					type: "LOGIN",
+					type: "SIGNIN",
 					payload: response.data.data,
 				});
-
-				// Status check
-				if (response.data.data.list_as_id === "Owner") {
-					navigate("/complain-admin");
-				} else {
-					navigate("/");
-				}
-
-				const alert = (
-					<Alert variant='success' className='py-1' dismissible>
-						Login success
-					</Alert>
-				);
-				setMessage(alert);
+				navigate("/");
+				props.onHide();
+				alert("Successfully Sign In");
 			}
 
-			props.onHide();
+			// Checking process
+			// if (response?.status === 200) {
+			// 	// Send data to useContext
+			// 	dispatch({
+			// 		type: "LOGIN",
+			// 		payload: response.data.data,
+			// 	});
+			// 	// navigate("/");
+			// 	props.onHide();
+			// 	// Status check
+			// 	// if (response.data.data.list_as_id === "Owner") {
+			// 	// 	navigate("/complain-admin");
+			// 	// } else {
+			// 	// 	navigate("/");
+			// 	// }
+
+			// 	const alert = (
+			// 		<Alert variant='success' className=''>
+			// 			Login success
+			// 		</Alert>
+			// 	);
+			// 	setMessage(alert);
+			// }
 		} catch (error) {
 			const alert = (
 				<Alert variant='danger' className='py-1'>
@@ -83,6 +94,11 @@ export default function LoginModal(props) {
 		}
 	});
 
+	const goRegister = () => {
+		props.onHide();
+		props.toRegister();
+	};
+
 	return (
 		<Modal
 			{...props}
@@ -92,7 +108,9 @@ export default function LoginModal(props) {
 		>
 			<Modal.Body className='m-3'>
 				<h1 className='text-center mt-3 mb-5 fw-bold'>Sign in</h1>
+
 				{message && message}
+
 				<Form onSubmit={(e) => handleSubmit.mutate(e)}>
 					<Form.Group className='mb-3'>
 						<Form.Label htmlFor='username' className='fw-bold fs-4'>
@@ -132,10 +150,10 @@ export default function LoginModal(props) {
 						</Button>
 					</Form.Group>
 
-					<Form.Text id='passwordHelpBlock' muted>
+					<Form.Text muted>
 						Don't have an acount? Click
 						<span
-							// onClick={(e) => goRegister()}
+							onClick={(e) => goRegister()}
 							className={"btn btn-link pb-2 px-1"}
 						>
 							here

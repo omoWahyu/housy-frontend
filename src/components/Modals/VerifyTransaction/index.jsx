@@ -5,7 +5,7 @@ import moment from "moment/moment";
 import logo from "../../../assets/icons/Logo.svg";
 import Stepper from "../../../assets/icons/Stepper.svg";
 
-import { conqurency } from "../../../lib/Currency";
+import { toCurrency } from "lib/Currency";
 
 import css from "./index.module.css";
 
@@ -122,11 +122,11 @@ export default function VerifyTransaction(props) {
 									total <span style={{ padding: "0 2.45rem" }}></span> :{" "}
 									{data[id].status === "Pending" ? (
 										<span className={"text-danger"}>
-											{conqurency(data[id].NetCost)}
+											{toCurrency(data[id].NetCost)}
 										</span>
 									) : (
 										<span className={css.TextSuccess}>
-											{conqurency(data[id].NetCost)}
+											{toCurrency(data[id].NetCost)}
 										</span>
 									)}
 								</td>

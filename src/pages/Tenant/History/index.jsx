@@ -7,7 +7,7 @@ import logo from "assets/icons/Logo.svg";
 import Stepper from "assets/icons/Stepper.svg";
 
 import css from "./index.module.css";
-import { conqurency } from "lib/Currency";
+import { toCurrency } from "lib/Currency";
 
 import moment from "moment/moment";
 export default function History() {
@@ -121,11 +121,11 @@ export default function History() {
 												total <span style={{ padding: "0 2.45rem" }}></span> :{" "}
 												{Book.status === "Pending" ? (
 													<span className={"text-danger"}>
-														{conqurency(Book.NetCost)}
+														{toCurrency(Book.NetCost)}
 													</span>
 												) : (
 													<span className={css.TextSuccess}>
-														{conqurency(Book.NetCost)}
+														{toCurrency(Book.NetCost)}
 													</span>
 												)}
 											</td>

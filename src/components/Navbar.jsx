@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { HiMagnifyingGlass } from "react-icons/hi2";
@@ -9,10 +9,14 @@ import { MdHomeWork } from "react-icons/md";
 
 import { Image } from "react-bootstrap";
 
+import { AppContext } from "context/AppContext";
+
 // Components
 import LoginModal from "components/Modals/Login";
 import logo from "assets/icons/Logo.svg";
 import RegisterModal from "components/Modals/Register";
+
+import { setAuthToken } from "lib/api";
 
 import {
 	Navbar,
@@ -24,23 +28,24 @@ import {
 } from "react-bootstrap";
 import css from "./Navbar.module.css";
 
+if (localStorage.token) {
+	setAuthToken(localStorage.token);
+}
+
 export default function Header(props) {
+	let navigate = useNavigate();
 	const [loginModal, setLoginModal] = useState(false);
 	const [registerModal, setRegisterModal] = useState(false);
-
-	const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+	const [state, dispatch] = useContext(AppContext);
+	// const isLogin = JSON.parse(localStorage.getItem("isLogin"));
 	const profilImage = process.env.PUBLIC_URL + "/img/Profile/";
-	const redirect = useNavigate();
 
 	const isLogout = () => {
-		localStorage.removeItem("isLogin");
+		dispatch({
+			type: "LOGOUT",
+		});
+		navigate("/");
 		alert("Logout Success, Bye👋");
-
-		if (isLogin.role === "Owner") {
-			window.location.href = "/";
-		} else {
-			redirect("/");
-		}
 	};
 	return (
 		<>
@@ -77,27 +82,10 @@ export default function Header(props) {
 							<div></div>
 						)}
 						<Nav className='ms-auto px-4 d-flex gap-2'>
-							{localStorage.getItem("isLogin") == null ? (
-								<>
-									<Button
-										size='lg'
-										variant='light'
-										onClick={() => setLoginModal(true)}
-									>
-										Sign In
-									</Button>
-									<Button
-										size='lg'
-										variant='tertiary'
-										onClick={() => setRegisterModal(true)}
-									>
-										Sign Up
-									</Button>
-								</>
-							) : (
+							{state.isLogin === true ? (
 								<Dropdown className={css.Dropdown}>
 									<Dropdown.Toggle className={css.Toggle}>
-										{isLogin && isLogin.role === "Owner" ? (
+										{state.user.list_as_id === 1 ? (
 											<Image
 												className={css.ToggleImage}
 												src={profilImage + "owner.webp"}
@@ -121,7 +109,7 @@ export default function Header(props) {
 											</div>
 											<span className='fs-5 fw-medium'>Profile</span>
 										</Dropdown.Item>
-										{isLogin.role === "Owner" ? (
+										{state.user.list_as_id === 1 ? (
 											<Dropdown.Item
 												as={Link}
 												to='/addproperty'
@@ -163,6 +151,23 @@ export default function Header(props) {
 										</Dropdown.Item>
 									</Dropdown.Menu>
 								</Dropdown>
+							) : (
+								<>
+									<Button
+										size='lg'
+										variant='light'
+										onClick={() => setLoginModal(true)}
+									>
+										Sign In
+									</Button>
+									<Button
+										size='lg'
+										variant='tertiary'
+										onClick={() => setRegisterModal(true)}
+									>
+										Sign Up
+									</Button>
+								</>
 							)}
 						</Nav>
 					</Navbar.Collapse>

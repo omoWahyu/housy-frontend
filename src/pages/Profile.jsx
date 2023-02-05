@@ -12,7 +12,7 @@ import {
 	MdPersonPinCircle,
 } from "react-icons/md";
 import { TbGenderBigender } from "react-icons/tb";
-import PassModal from "components/Modals/auth/ChangePasswordmodal";
+import PassModal from "components/Modals/ChangePassword";
 import Layout from "layouts/withSearchbar";
 
 export default function Profile() {
